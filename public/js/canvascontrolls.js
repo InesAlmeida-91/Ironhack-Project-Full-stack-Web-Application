@@ -1,7 +1,8 @@
 //initial values
+let animation;
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-ctx.canvas.width  = 300;
+ctx.canvas.width  = 265;
 ctx.canvas.height = 400;
 const shoeRight = new Image();
 const shoeLeft = new Image();
@@ -20,6 +21,9 @@ const pantsLeft = new Image();
 const pantsRight = new Image();
 const belt = new Image();
 const shirt = new Image();
+const mouth = new Image();
+const nose = new Image();
+const eye = new Image();
 
 //adjust initial values
 let shoeStyle = 1;
@@ -34,23 +38,10 @@ let sleeveColor = 1;
 let shirtColor = 1;
 let hairStyle = 1;
 let hairColor = 1;
-shoeRight.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}right.png`;
-shoeLeft.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}left.png`;
-skinLegRight.src = `/images/avatar/Skin/${skinColor}legright.png`;
-skinLegLeft.src = `/images/avatar/Skin/${skinColor}legleft.png`;
-skinNeck.src = `/images/avatar/Skin/${skinColor}neck.png`;
-skinHead.src = `/images/avatar/Skin/${skinColor}head.png`;
-skinArmLeft.src = `/images/avatar/Skin/${skinColor}armleft.png`;
-skinArmRight.src = `/images/avatar/Skin/${skinColor}armright.png`;
-skinHandLeft.src = `/images/avatar/Skin/${skinColor}handleft.png`;
-skinHandRight.src = `/images/avatar/Skin/${skinColor}handright.png`;
-belt.src = `/images/avatar/Pants/${beltColor}belt${pantsColor}.png`;
-shirt.src = `/images/avatar/Shirts/${shirtColor}shirt${shirtStyle}.png`;
-sleeveLeft.src = `/images/avatar/Shirts/${sleeveColor}sleeve${sleeveStyle}left.png`;
-sleeveRight.src = `/images/avatar/Shirts/${sleeveColor}sleeve${sleeveStyle}right.png`;
-hair.src = `/images/avatar/Hair/${hairColor}hair${hairStyle}.png`;
-pantsLeft.src = `/images/avatar/Pants/${pantsColor}pants${pantsStyle}left.png`;
-pantsRight.src = `/images/avatar/Pants/${pantsColor}pants${pantsStyle}right.png`;
+let mouthStyle = 1;
+let noseStyle = 1;
+let eyeStyle = 1;
+let eyeColor = 1;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
 document.addEventListener("DOMContentLoaded", () => {
@@ -62,6 +53,7 @@ document.getElementById('start').addEventListener('click', function(){
   document.getElementById('start').setAttribute('style', 'visibility: hidden');
   document.getElementById('showOnStart').setAttribute('style', 'visibility: visible');
   //put the rest of the buttons
+  updateDrawing();
   drawCurrent();
 })
 //Shoe Style
@@ -196,6 +188,54 @@ document.getElementById('prv-har-clr').addEventListener('click', function(){
   if(hairColor < 1){hairColor = 8;}
   updateDrawing();
 })
+//Mouth Style
+document.getElementById('nxt-mth-sty').addEventListener('click', function(){
+  mouthStyle++;
+  if(mouthStyle > 7){mouthStyle = 1;}
+  updateDrawing();
+})
+document.getElementById('prv-mth-sty').addEventListener('click', function(){
+  mouthStyle--;
+  if(mouthStyle < 1){mouthStyle = 7;}
+  updateDrawing();
+})
+//Nose Style
+document.getElementById('nxt-nos-sty').addEventListener('click', function(){
+  noseStyle++;
+  if(noseStyle > 3){noseStyle = 1;}
+  updateDrawing();
+})
+document.getElementById('prv-nos-sty').addEventListener('click', function(){
+  noseStyle--;
+  if(noseStyle < 1){noseStyle = 3;}
+  updateDrawing();
+})
+//eye Style
+document.getElementById('nxt-eye-sty').addEventListener('click', async function(){
+  eyeStyle++;
+  if(eyeStyle > 3){eyeStyle = 1;}
+  if(eyeStyle===3){eyeColor = 1;}
+  updateDrawing();
+})
+document.getElementById('prv-eye-sty').addEventListener('click', function(){
+  eyeStyle--;
+  if(eyeStyle < 1){eyeStyle = 3;}
+  if(eyeStyle===3){eyeColor = 1;}
+  updateDrawing();
+})
+//eye Color
+document.getElementById('nxt-eye-clr').addEventListener('click', function(){
+  eyeColor++;
+  if(eyeColor > 5){eyeColor = 1;}
+  if(eyeStyle===3){eyeColor = 1;}
+  updateDrawing();
+})
+document.getElementById('prv-eye-clr').addEventListener('click', function(){
+  eyeColor--;
+  if(eyeColor < 1){eyeColor = 5;}
+  if(eyeStyle===3){eyeColor = 1;}
+  updateDrawing();
+})
 
 function updateDrawing(){
   shoeRight.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}right.png`;
@@ -208,14 +248,17 @@ function updateDrawing(){
   skinArmRight.src = `/images/avatar/Skin/${skinColor}armright.png`;
   skinHandLeft.src = `/images/avatar/Skin/${skinColor}handleft.png`;
   skinHandRight.src = `/images/avatar/Skin/${skinColor}handright.png`;
-  belt.src = `/images/avatar/Pants/${beltColor}belt${pantsColor}.png`;
+  belt.src = `/images/avatar/Pants/${pantsColor}belt${beltColor}.png`;
   shirt.src = `/images/avatar/Shirts/${shirtColor}shirt${shirtStyle}.png`;
   sleeveLeft.src = `/images/avatar/Shirts/${sleeveColor}sleeve${sleeveStyle}left.png`;
   sleeveRight.src = `/images/avatar/Shirts/${sleeveColor}sleeve${sleeveStyle}right.png`;
-  hair.src = `/images/avatar/Hair/${hairColor}hair${hairStyle}.png`;
+  if (hairStyle===0){hair.src = ``;}
+  else {hair.src = `/images/avatar/Hair/${hairColor}hair${hairStyle}.png`;}
   pantsLeft.src = `/images/avatar/Pants/${pantsColor}pants${pantsStyle}left.png`;
   pantsRight.src = `/images/avatar/Pants/${pantsColor}pants${pantsStyle}right.png`;
-  drawCurrent();
+  mouth.src = `/images/avatar/Face/Mouth/mouth${mouthStyle}.png`;
+  nose.src = `/images/avatar/Face/Nose/tint${skinColor}Nose${noseStyle}.png`
+  eye.src = `/images/avatar/Face/Eyes/${eyeColor}eye${eyeStyle}.png`
 }
 
 //add event listeners for the buttons
@@ -274,6 +317,31 @@ function sleeveAlign(){
     ctx.drawImage(sleeveRight, 155, 93, 43, 60);
   }
 }
+function noseAlign(){
+  if(noseStyle === 1){
+    ctx.drawImage(nose, 120, 60, 20, 10);
+  }
+  if(noseStyle === 2){
+    ctx.drawImage(nose, 120, 50, 20, 20);
+  }
+  if(noseStyle === 3){
+    ctx.drawImage(nose, 123, 63, 15, 8);
+  }
+}
+function eyeAlign(){
+  if(eyeStyle === 1){
+    ctx.drawImage(eye, 110, 47, 10, 10);
+    ctx.drawImage(eye, 139, 47, 10, 10);
+  }
+  if(eyeStyle === 2){
+    ctx.drawImage(eye, 112, 52, 5, 5);
+    ctx.drawImage(eye, 143, 52, 5, 5);
+  }
+  if(eyeStyle === 3){
+    ctx.drawImage(eye, 106, 52, 15, 5);
+    ctx.drawImage(eye, 140, 52, 15, 5);
+  }
+}
 
 function drawCurrent(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -291,8 +359,12 @@ function drawCurrent(){
   ctx.drawImage(belt, 87.5, 215, 85, 30);
   ctx.drawImage(shoeRight, 155, 350, 50, 25);
   ctx.drawImage(shoeLeft, 55, 350, 50, 25);
+  ctx.drawImage(mouth, 120, 75, 20, 10);
   pantsAlign();
   hairAlign();
+  noseAlign()
+  eyeAlign();
+  animation = requestAnimationFrame(drawCurrent);
 }
 
 
