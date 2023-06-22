@@ -1,0 +1,16 @@
+<form action="/auth/login" method="POST">
+
+     <label> Email
+      <input type="email" name="email" placeholder="socialnetwork@socialnetwork.com" required />
+    </label>
+    <br>
+    <label> Password
+      <input type="password" name="password" placeholder="********" required />
+    </label>
+ 
+    <button type="submit">Login</button>
+
+     {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+</form>
