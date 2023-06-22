@@ -32,7 +32,7 @@ router.post("/signup", async (req, res, next) => {
 
 router.get('/login', (req, res) =>{
   if(req.session.currentUser){
-    res.render('auth/login', { loggedIn: true });
+    res.redirect('/');
   } else{
       res.render('auth/login');
     }
@@ -60,7 +60,7 @@ router.get('/login', (req, res) =>{
         req.session.currentUser = { username };
         user.loggedIn = true; 
         await user.save();
-        res.render('index', { currentUser: req.session.currentUser });
+        res.redirect('/');
       } else {
         res.render('auth/login', { errorMessage: 'Incorrect password.' });
       }

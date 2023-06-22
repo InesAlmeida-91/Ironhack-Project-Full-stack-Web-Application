@@ -9,8 +9,7 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   try {
     if(req.session.currentUser){
       const foundUser = await User.findOne({ username: req.session.currentUser.username });
-      foundUser.loggedIn = true;
-      res.render('profile/userProfile', foundUser)    
+      res.render('profile/userProfile', {foundUser: foundUser, loggedIn: true})    
     }
     else{
       res.render('/')
