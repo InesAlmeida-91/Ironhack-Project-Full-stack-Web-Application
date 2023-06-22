@@ -26,10 +26,6 @@ const userSchema = new Schema(
     googleId: { 
       type: String 
     },
-    loggedIn: {
-      type: Boolean,
-      default: false
-    },
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }]
   },
   {    

@@ -3,11 +3,11 @@ const { isLoggedIn } = require('../middleware/route.guard');
 const router = express.Router();
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.post("/post", (req, res, next) => {
   if(req.session.currentUser){
-    res.render('index', {loggedIn: true});
+    console.log(req.body)
   }
-  else {res.render("index");}
+  else {res.redirect("/");}
 });
 
 module.exports = router;
