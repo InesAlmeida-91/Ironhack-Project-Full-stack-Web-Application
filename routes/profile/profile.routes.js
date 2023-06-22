@@ -12,7 +12,7 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
       res.render('profile/userProfile', {foundUser: foundUser, loggedIn: true})    
     }
     else{
-      res.render('/')
+      res.redirect('/')
     }
   } catch (error) {
   console.log(error)
