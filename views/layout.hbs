@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{appTitle}}</title>
+   <link rel="stylesheet" href="/stylesheets/reset.css" />
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-   <body>
+<body>
 
-      {{{body}}}
+<nav>
+   <div>
+      <a href="/">Website Name</a>
+   </div>
+   <div id="login">
+      {{#if loggedIn}}
+      <form action="" method="post">
+         <input type="button" value="Logout">
+      </form>
+      {{else}}
+      <form action="" method="post">
+         <input type="text" name="" id="" placeholder="Username">
+         <input type="password" name="" id="" placeholder="Password">
+         <input type="button" value="Log In">
+      </form>
+      <button type="button">Sign Up</button>
+      {{/if}}
+   </div>
+</nav>
 
-      <script src="/js/script.js"></script>
-      
-   </body>
+<div id="navbuffer"></div>
+
+<header>
+   <form action="" method="post">
+      <textarea name="" id="" cols="30" rows="10" style="resize: none;"></textarea>
+      <input type="button" value="Post">
+   </form>
+</header>
+   
+
+   {{{body}}}
+
+
+<script src="/js/script.js"></script>   
+</body>
 
 </html>
