@@ -7,7 +7,7 @@ const router = express.Router();
 const User = require('../../models/User.model');
 const { isLoggedIn, isLoggedOut } = require('../../middleware/route.guard');
  
-router.get("/signup", isLoggedIn, (req, res, next) => {
+router.get("/signup", isLoggedOut, (req, res, next) => {
   
   res.render('auth/signup');
      
@@ -23,6 +23,7 @@ router.post("/signup", async (req, res, next) => {
     req.session.currentUser = {username, email};
     res.redirect('/profile');
   } catch(error){
+      res.render('auth/signup', {errorMessage: 'invalid username or email'})
       console.log(error);
     }
 });
@@ -42,7 +43,6 @@ router.post('/login', async (req, res) => {
       res.render('auth/login', {
         errorMessage: 'Please enter email and password to login.'
       });
-      return;
     }
     const user = await User.findOne({ email });
     console.log('user', user);
@@ -50,7 +50,6 @@ router.post('/login', async (req, res) => {
       res.render('auth/login', {
         errorMessage: 'Email is not registered. Try with another email.'
       });
-      return;
     } else if (bcrypt.compareSync(password, user.passwordHash)) {
       const { username, email } = user;
       req.session.currentUser = { username };
@@ -68,13 +67,12 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', async (req,res) =>{
   try {
-     const { currentUser } = req.session;
-      if (currentUser) {
-        await User.findOneAndUpdate(
-          { username: currentUser.username },
-          { loggedIn: false }
-          );
-        }
+    //  const { currentUser } = req.session;
+      // if (currentUser) {
+      //   await User.findOneAndUpdate(
+      //     { username: currentUser.username },
+      //     );
+      //   }
       req.session.destroy();
         res.redirect('/');
       } catch (error) {

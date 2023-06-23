@@ -20,8 +20,8 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
 });
 
 
-router.get("/temp", (req, res, next) => {
-  res.render("profile/avatar");
+router.get("/profile/avatar", (req, res, next) => {
+  res.render("profile/avatar", {loggedIn: true});
 });
 
 module.exports = router;
