@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
       });
     } else if (bcrypt.compareSync(password, user.passwordHash)) {
       const { username, email } = user;
-      req.session.currentUser = { username };
+      req.session.currentUser = user;
       user.loggedIn = true; 
       await user.save();
       res.redirect('/');
