@@ -33,7 +33,7 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+//userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 const User = model("User", userSchema);
 

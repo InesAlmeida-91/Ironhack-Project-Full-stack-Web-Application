@@ -1,0 +1,14 @@
+<h1>Update Profile</h1>
+
+<form action="/profile/updateProfile" method="POST">
+  <label>Username</label>
+  <input type="text" name="username" value="{{foundUser.username}}" required />
+  <br />
+  <label>Email</label>
+  <input type="email" name="email" value="{{foundUser.email}}" required />
+  <br />
+  <label>Password</label>
+  <input type="password" name="password" required />
+  <br />
+  <button type="submit">Save Changes</button>
+</form>

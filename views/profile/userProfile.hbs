@@ -6,8 +6,9 @@
 <a href="/profile/avatar">Create your avatar</a>
 
 <h3>Do you need to change your profile?</h3>
-    <a href="">Change Username</a>
-    <a href="">Change Password</a>
-    <a href="">Change your avatar</a>
+<a href="/profile/updateProfile">Update Profile</a>
 
-
+<h3>Do you want to delete your account?</h3>
+<form action="/profile/delete" method="POST">
+  <button onclick="return confirm('Are you sure you want to delete your profile?')"> Delete Profile </button>
+</form>
