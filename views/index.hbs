@@ -1,33 +1,49 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
-
+<main class="container row align-items-start">
+    <section class="col-3"></section>
+    <section class="col-5">
 {{#if loggedIn}}
-<form action="/post" method="post" name="createPost">
-<input type="text" name="title" id="" required>
-    <textarea name="content" id="createPost" cols="30" rows="10" style="resize: none;" required></textarea>
-    <select name="theme" id="" required>
-        <option value="">Select a Theme</option>
-        <option value="Humor">Humor</option>
-        <option value="Sports">Sports</option>
-        <option value="Ask">Ask</option>
-        <option value="Today I...">Today I...</option>
-        <option value="Others">Others</option>
-    </select>
-    <input type="submit" value="Create Post">
-</form>
+        <div class="card" style="width: 55vw; margin-top: 50px;">
+            <form action="/post" method="post" name="createPost">
+            <div class="card-header">
+                <select name="theme" id="" required>
+                    <option value="">Select a Theme</option>
+                    <option value="Humor">Humor</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Ask">Ask</option>
+                    <option value="Today I...">Today I...</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <input type="text" name="title" id="" style="width: 51vw;" required>
+                </h5>
+                <textarea name="content" id="createPost" rows="10" style="resize: none; width:51vw;" required></textarea>
+                <br>
+                <input type="submit" value="Create Post">
+            </div>
+            </form>
+            <div class="card-footer">
+                {{currentUser.username}}
+            </div>
+            
+        </div>
 {{else}}
 {{/if}}
 
-{{#each postArray}}
-{{title}}
-<br>
-{{content}}
-<br>
-{{theme}}
-<br>
-{{author.username}}
-<br>
-Comments: {{commentcount}}
-<br>
-<br>
-{{/each}}
+        {{#each postArray}}
+        <div class="card" style="margin-top: 50px; width:55vw;">
+            <div class="card-header">{{theme}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{content}} <br><br> Comments: {{commentcount}}</p>
+                <a href="#" class="btn btn-primary">Comment</a>
+            </div>
+            <div class="card-footer">
+                {{author.username}}
+            </div>
+        </div>
+        {{/each}}
+    </section>
+    <section class="col-3"></section>
+</main>
