@@ -29,7 +29,7 @@ router.post("/signup", async (req, res, next) => {
 });
 
 
-router.get('/login', isLoggedIn, (req, res) =>{
+router.get('/login', isLoggedOut, (req, res) =>{
   
       res.render('auth/login');
   
