@@ -18,5 +18,12 @@
 
     <button type="submit">Create account</button>
 
-    <p>Already a member? <a href="/auth/login">Log in</a></p>
+    <p>Already a member? 
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Log In
+      </button>
 </form>
+
+{{#if errorMessage}}
+   <p>{{errorMessage}}</p>
+{{/if}}
