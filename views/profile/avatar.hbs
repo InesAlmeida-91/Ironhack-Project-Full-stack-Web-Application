@@ -62,41 +62,30 @@
         <button id="prv-eye-clr">&laquo; Previous</button>
         Eye Color <span id="eye-clr">{{currentUser.eyeColor}}</span>
         <button id="nxt-eye-clr">Next &raquo;</button>
+
+        <form action="/{{currentUser.username}}/avatar" method="post">
+            <input type="number" name="shoeStyle" id="shoe-sty-inp" hidden>
+            <input type="number" name="shoeColor" id="shoe-clr-inp" hidden>
+            <input type="number" name="skinColor" id="skn-clr-inp" hidden>
+            <input type="number" name="beltColor" id="blt-clr-inp" hidden>
+            <input type="number" name="pantsColor" id="pnt-clr-inp" hidden>
+            <input type="number" name="pantsStyle" id="pnt-sty-inp" hidden>
+            <input type="number" name="shirtStyle" id="sht-sty-inp" hidden>
+            <input type="number" name="sleeveStyle" id="slv-sty-inp" hidden>
+            <input type="number" name="sleeveColor" id="slv-clr-inp" hidden>
+            <input type="number" name="shirtColor" id="sht-clr-inp" hidden>
+            <input type="number" name="hairStyle" id="har-sty-inp" hidden>
+            <input type="number" name="hairColor" id="har-clr-inp" hidden>
+            <input type="number" name="mouthStyle" id="mth-sty-inp" hidden>
+            <input type="number" name="noseStyle" id="nos-sty-inp" hidden>
+            <input type="number" name="eyeStyle" id="eye-sty-inp" hidden>
+            <input type="number" name="eyeColor" id="eye-clr-inp" hidden>
+            <input type="text" name="avatar" id="avt-src-inp" hidden>
+            <input type="submit" value="Save">
+        </form>
     </div>
+    
 </div>
-<form action="/{{currentUser.username}}/avatar" method="post">
-<label for="">Shoe Style:</label>
-<input type="number" name="shoeStyle" id="shoe-sty-inp">
-<label for="">Shoe Style:</label>
-<input type="number" name="shoeColor" id="shoe-clr-inp">
-<label for="">Skin Color:</label>
-<input type="number" name="skinColor" id="skn-clr-inp">
-<label for="">Belt Color:</label>
-<input type="number" name="beltColor" id="blt-clr-inp">
-<label for="">Pants Color:</label>
-<input type="number" name="pantsColor" id="pnt-clr-inp">
-<label for="">Pants Style:</label>
-<input type="number" name="pantsStyle" id="pnt-sty-inp">
-<label for="">Shirt Style:</label>
-<input type="number" name="shirtStyle" id="sht-sty-inp">
-<label for="">Sleeve Style:</label>
-<input type="number" name="sleeveStyle" id="slv-sty-inp">
-<label for="">Sleeve Color:</label>
-<input type="number" name="sleeveStyle" id="slv-clr-inp">
-<label for="">Shirt Color:</label>
-<input type="number" name="shirtStyle" id="sht-clr-inp">
-<label for="">Hair Style:</label>
-<input type="number" name="hairStyle" id="har-sty-inp">
-<label for="">Hair Color:</label>
-<input type="number" name="hairColor" id="har-clr-inp">
-<label for="">Mouth Style:</label>
-<input type="number" name="mouthStyle" id="mth-sty-inp">
-<label for="">Nose Style:</label>
-<input type="number" name="noseStyle" id="nos-sty-inp">
-<label for="">Eye Style:</label>
-<input type="number" name="eyeStyle" id="eye-sty-inp">
-<label for="">Eye Color:</label>
-<input type="number" name="eyeColor" id="eye-clr-inp">
-</form>
+
 
 <script src="/js/canvascontrolls.js"></script>

@@ -26,22 +26,22 @@ const nose = new Image();
 const eye = new Image();
 
 //adjust initial values
-let shoeStyle = 1;
-let shoeColor= 1;
-let skinColor= 1;
-let beltColor = 1;
-let pantsColor = 1;
-let pantsStyle = 1;
-let shirtStyle = 1;
-let sleeveStyle = 1;
-let sleeveColor = 1;
-let shirtColor = 1;
-let hairStyle = 1;
-let hairColor = 1;
-let mouthStyle = 1;
-let noseStyle = 1;
-let eyeStyle = 1;
-let eyeColor = 1;
+let shoeStyle = document.getElementById('shoe-sty').innerHTML;
+let shoeColor = document.getElementById('shoe-clr').innerHTML;
+let skinColor = document.getElementById('skn-clr').innerHTML;
+let beltColor = document.getElementById('blt-clr').innerHTML;
+let pantsColor = document.getElementById('pnt-clr').innerHTML;
+let pantsStyle = document.getElementById('pnt-sty').innerHTML;
+let shirtStyle = document.getElementById('sht-sty').innerHTML;
+let sleeveStyle = document.getElementById('slv-sty').innerHTML;
+let sleeveColor = document.getElementById('slv-clr').innerHTML;
+let shirtColor =document.getElementById('sht-clr').innerHTML;
+let hairStyle = document.getElementById('har-sty').innerHTML;
+let hairColor = document.getElementById('har-clr').innerHTML;
+let mouthStyle = document.getElementById('mth-sty').innerHTML;
+let noseStyle = document.getElementById('nos-sty').innerHTML;
+let eyeStyle = document.getElementById('eye-sty').innerHTML;
+let eyeColor = document.getElementById('eye-clr').innerHTML;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
 document.addEventListener("DOMContentLoaded", () => {
@@ -214,13 +214,13 @@ document.getElementById('prv-nos-sty').addEventListener('click', function(){
 document.getElementById('nxt-eye-sty').addEventListener('click', async function(){
   eyeStyle++;
   if(eyeStyle > 3){eyeStyle = 1;}
-  if(eyeStyle===3){eyeColor = 1;}
+  if(eyeStyle == 3){eyeColor = 1;}
   updateDrawing();
 })
 document.getElementById('prv-eye-sty').addEventListener('click', function(){
   eyeStyle--;
   if(eyeStyle < 1){eyeStyle = 3;}
-  if(eyeStyle===3){eyeColor = 1;}
+  if(eyeStyle == 3){eyeColor = 1;}
   updateDrawing();
 })
 //eye Color
@@ -270,6 +270,7 @@ function updateDrawing(){
   document.getElementById('eye-sty-inp').value = eyeStyle;
   document.getElementById('eye-clr').innerHTML = eyeColor;
   document.getElementById('eye-clr-inp').value = eyeColor;
+  document.getElementById('avt-src-inp').value = document.getElementById("canvas").toDataURL("image/png");
 
   shoeRight.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}right.png`;
   shoeLeft.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}left.png`;
@@ -300,83 +301,84 @@ function updateDrawing(){
 //shoe, shirt, pants, hair parameters: color and style
 
 function hairAlign(){
-  if (hairStyle === 1 || hairStyle === 6 || hairStyle === 7){
+  if (hairStyle == 1 || hairStyle == 6 || hairStyle == 7){
     ctx.drawImage(hair, 93, 10, 75, 55);
   }
-  if (hairStyle === 2 || hairStyle === 3 || hairStyle === 4){
+  if (hairStyle == 2 || hairStyle == 3 || hairStyle == 4){
     ctx.drawImage(hair, 93, 7, 75, 55);
   }
-  if (hairStyle === 3 || hairStyle === 4){
+  if (hairStyle == 3 || hairStyle == 4){
     ctx.drawImage(hair, 93, 7, 75, 55);
   }
-  if (hairStyle === 5){
+  if (hairStyle == 5){
     ctx.drawImage(hair, 93, 7, 82, 55);
   }
-  if (hairStyle === 8){
+  if (hairStyle == 8){
     ctx.drawImage(hair, 93, 50, 74, 15);
   }
-  if (hairStyle === 10 || hairStyle === 12 || hairStyle === 13 || hairStyle === 14){
+  if (hairStyle == 10 || hairStyle == 12 || hairStyle == 13 || hairStyle == 14){
     ctx.drawImage(hair, 93, 7, 75, 114);
   }
-  if (hairStyle === 9 || hairStyle === 11){
+  if (hairStyle == 9 || hairStyle == 11){
     ctx.drawImage(hair, 93, 7, 75, 140);
   }
 }
 function pantsAlign(){
-  if(pantsStyle === 1){
+  if(pantsStyle == 1){
     ctx.drawImage(pantsLeft, 70, 227, 60, 130);
     ctx.drawImage(pantsRight, 130, 227, 60, 130);
   }
-  if(pantsStyle === 2){
+  if(pantsStyle == 2){
     ctx.drawImage(pantsLeft, 72, 227, 60, 100);
     ctx.drawImage(pantsRight, 128, 227, 60, 100);
   }
-  if(pantsStyle === 3){
+  if(pantsStyle == 3){
     ctx.drawImage(pantsLeft, 72, 227, 60, 80);
     ctx.drawImage(pantsRight, 128, 227, 60, 80);
   }
 }
 function sleeveAlign(){
-  if(sleeveStyle === 1){
+  if(sleeveStyle == 1){
     ctx.drawImage(sleeveLeft, 21, 93, 85, 100);
     ctx.drawImage(sleeveRight, 155, 93, 85, 100);
   }
-  if(sleeveStyle === 2){
-    ctx.drawImage(sleeveLeft, 40, 96, 63, 70);
+  if(sleeveStyle == 2){
+    ctx.drawImage(sleeveLeft, 40, 95, 63, 70);
     ctx.drawImage(sleeveRight, 155, 93, 63, 70);
   }
-  if(sleeveStyle === 3){
-    ctx.drawImage(sleeveLeft, 60, 96, 43, 60);
+  if(sleeveStyle == 3){
+    ctx.drawImage(sleeveLeft, 60, 95, 43, 60);
     ctx.drawImage(sleeveRight, 155, 93, 43, 60);
   }
 }
 function noseAlign(){
-  if(noseStyle === 1){
+  if(noseStyle == 1){
     ctx.drawImage(nose, 120, 60, 20, 10);
   }
-  if(noseStyle === 2){
+  if(noseStyle == 2){
     ctx.drawImage(nose, 120, 50, 20, 20);
   }
-  if(noseStyle === 3){
+  if(noseStyle == 3){
     ctx.drawImage(nose, 123, 63, 15, 8);
   }
 }
 function eyeAlign(){
-  if(eyeStyle === 1){
+  if(eyeStyle == 1){
     ctx.drawImage(eye, 110, 47, 10, 10);
     ctx.drawImage(eye, 139, 47, 10, 10);
   }
-  if(eyeStyle === 2){
+  if(eyeStyle == 2){
     ctx.drawImage(eye, 112, 52, 5, 5);
     ctx.drawImage(eye, 143, 52, 5, 5);
   }
-  if(eyeStyle === 3){
+  if(eyeStyle == 3){
     ctx.drawImage(eye, 106, 52, 15, 5);
     ctx.drawImage(eye, 140, 52, 15, 5);
   }
 }
 
 function drawCurrent(){
+  document.getElementById('avt-src-inp').value = document.getElementById("canvas").toDataURL("image/png");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //adjust positions
   ctx.drawImage(skinNeck, 97.5, 90, 65, 40);

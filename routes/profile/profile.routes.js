@@ -33,14 +33,31 @@ router.get("/:profile", async (req, res, next) => {
 //Avatar
 //Profile Model link avatar and add default
 
-router.get("/profile/avatar", isLoggedIn, (req, res, next) => {
-  console.log(req.session.currentUser)
-  res.render("profile/avatar", {loggedIn: true, currentUser: req.session.currentUser});
+router.get("/:profile/avatar", isLoggedIn, async (req, res, next) => {
+  try {
+    const foundUser = await User.findOne({ username: req.params.profile });
+    if(req.session.currentUser.username === req.params.profile){
+      res.render(`profile/avatar`, {loggedIn: true, currentUser: foundUser});
+    }
+    else{res.redirect('/')}
+  }
+  catch (error) {
+    console.log(error)
+  }
+
+});
+
+router.post("/:profile/avatar", isLoggedIn, async (req, res, next) => {
+  if(req.session.currentUser.username === req.params.profile){
+    await User.findOneAndUpdate({username: req.session.currentUser.username}, req.body);
+    res.redirect(`/${req.session.currentUser.username}`)
+  }
+  else{res.redirect('/')}
 });
 
 router.get('/:profile/updateProfile', isLoggedIn, (req, res) => {
   if(req.session.currentUser.username === req.params.profile){
-    res.render('profile/updateProfile', { foundUser: req.session.currentUser, loggedIn: true, currentUser: req.session.currentUser});
+    res.render(`profile/updateProfile`, { foundUser: req.session.currentUser, loggedIn: true, currentUser: req.session.currentUser});
   }
   else{res.redirect('/')}
 });
