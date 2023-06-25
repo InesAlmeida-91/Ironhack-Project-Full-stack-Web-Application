@@ -1,8 +1,12 @@
 <main class="container row align-items-start">
     <section class="col-3">
-    
+        <h4>Interests</h3>
+        <p>Humor</p>
+        <p>Sports</p>
+        <p>Ask</p>
+        <p>Today I...</p>
     </section>
-    <section class="col-6">
+    <section class="col-5">
 {{#if loggedIn}}
         <div class="card" style="width: 55vw; margin-top: 50px;">
             <form action="/post" method="post" name="createPost">
@@ -19,7 +23,9 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <input type="text" name="title" id="" style="width: 52.5vw;" required>
+                    <input type="text" name="title" id="" style="width: 52.5vw;" required>
                 </h5>
+                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
                 <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
                 <br>
                 <input type="submit" value="Create Post">
@@ -46,6 +52,8 @@
             </div>
         </div>
         {{/each}}
+    </section>
+    <section class="col-3">
     </section>
     <section class="col-3">
     </section>
