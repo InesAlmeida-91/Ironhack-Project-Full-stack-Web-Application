@@ -34,6 +34,7 @@ router.get("/:profile", async (req, res, next) => {
 //Profile Model link avatar and add default
 
 router.get("/profile/avatar", isLoggedIn, (req, res, next) => {
+  console.log(req.session.currentUser)
   res.render("profile/avatar", {loggedIn: true, currentUser: req.session.currentUser});
 });
 

@@ -5,6 +5,7 @@ const Post = require('../models/Post.model');
 
 /* GET home page */
 router.get("/", async (req, res, next) => {
+  console.log(req.session.currentUser)
   try{
     const postArray = await Post.find().populate('author')
     const latestFirst = []; 

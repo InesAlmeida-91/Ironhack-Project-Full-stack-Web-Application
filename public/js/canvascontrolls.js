@@ -27,13 +27,13 @@ const eye = new Image();
 
 //adjust initial values
 let shoeStyle = 1;
-let shoeColor=1;
-let skinColor=1;
+let shoeColor= 1;
+let skinColor= 1;
 let beltColor = 1;
 let pantsColor = 1;
 let pantsStyle = 1;
 let shirtStyle = 1;
-let sleeveStyle = 3;
+let sleeveStyle = 1;
 let sleeveColor = 1;
 let shirtColor = 1;
 let hairStyle = 1;
@@ -102,22 +102,22 @@ document.getElementById('prv-blt-clr').addEventListener('click', function(){
 })
 // Pants Style
 document.getElementById('prv-pnt-sty').addEventListener('click', function(){
-  pantsStyle++;
-  if(pantsStyle > 3){pantsStyle = 1;}
-  updateDrawing();
-})
-document.getElementById('nxt-pnt-sty').addEventListener('click', function(){
   pantsStyle--;
   if(pantsStyle < 1){pantsStyle = 3;}
   updateDrawing();
 })
+document.getElementById('nxt-pnt-sty').addEventListener('click', function(){
+  pantsStyle++;
+  if(pantsStyle > 3){pantsStyle = 1;}
+  updateDrawing();
+})
 //Pants Color
-document.getElementById('prv-pnt-clr').addEventListener('click', function(){
+document.getElementById('nxt-pnt-clr').addEventListener('click', function(){
   pantsColor++;
   if(pantsColor > 12){pantsColor = 1;}
   updateDrawing();
 })
-document.getElementById('nxt-pnt-clr').addEventListener('click', function(){
+document.getElementById('prv-pnt-clr').addEventListener('click', function(){
   pantsColor--;
   if(pantsColor < 1){pantsColor = 12;}
   updateDrawing();
@@ -238,6 +238,39 @@ document.getElementById('prv-eye-clr').addEventListener('click', function(){
 })
 
 function updateDrawing(){
+  document.getElementById('shoe-sty').innerHTML = shoeStyle;
+  document.getElementById('shoe-sty-inp').value = shoeStyle;
+  document.getElementById('shoe-clr').innerHTML = shoeColor;
+  document.getElementById('shoe-clr-inp').value = shoeColor;
+  document.getElementById('skn-clr').innerHTML = skinColor;
+  document.getElementById('skn-clr-inp').value = skinColor;
+  document.getElementById('blt-clr').innerHTML = beltColor;
+  document.getElementById('blt-clr-inp').value = beltColor;
+  document.getElementById('pnt-clr').innerHTML = pantsColor;
+  document.getElementById('pnt-clr-inp').value = pantsColor;
+  document.getElementById('pnt-sty').innerHTML = pantsStyle;
+  document.getElementById('pnt-sty-inp').value = pantsStyle;
+  document.getElementById('sht-sty').innerHTML = shirtStyle;
+  document.getElementById('sht-sty-inp').value = shirtStyle;
+  document.getElementById('slv-sty').innerHTML = sleeveStyle;
+  document.getElementById('slv-sty-inp').value = sleeveStyle;
+  document.getElementById('slv-clr').innerHTML = sleeveColor;
+  document.getElementById('slv-clr-inp').value = sleeveColor;
+  document.getElementById('sht-clr').innerHTML = shirtColor;
+  document.getElementById('sht-clr-inp').value = shirtColor;
+  document.getElementById('har-sty').innerHTML = hairStyle;
+  document.getElementById('har-sty-inp').value = hairStyle;
+  document.getElementById('har-clr').innerHTML = hairColor;
+  document.getElementById('har-clr-inp').value = hairColor;
+  document.getElementById('mth-sty').innerHTML = mouthStyle;
+  document.getElementById('mth-sty-inp').value = mouthStyle;
+  document.getElementById('nos-sty').innerHTML = noseStyle;
+  document.getElementById('nos-sty-inp').value = noseStyle;
+  document.getElementById('eye-sty').innerHTML = eyeStyle;
+  document.getElementById('eye-sty-inp').value = eyeStyle;
+  document.getElementById('eye-clr').innerHTML = eyeColor;
+  document.getElementById('eye-clr-inp').value = eyeColor;
+
   shoeRight.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}right.png`;
   shoeLeft.src = `/images/avatar/Shoes/${shoeColor}Shoe${shoeStyle}left.png`;
   skinLegRight.src = `/images/avatar/Skin/${skinColor}legright.png`;
