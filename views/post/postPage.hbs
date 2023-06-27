@@ -1,0 +1,27 @@
+<div class="card" style="margin-top: 50px; width:55vw;">
+    <div class="card-header">{{post.theme}}</div>
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.content}} <br><br> Comments: {{post.commentcount}}</p>
+        <a href="#" class="btn btn-primary" id="addCommentButton">Add Comment</a>
+        <a href="#" class="btn btn-primary" id="seeCommentsButton">See Comments</a>
+        <button class="btn btn-secondary" onclick="goBack()">Go Back</button>
+    </div>
+    <div class="card-footer">
+        {{post.author.username}}
+    </div>
+</div>
+
+<script>
+    document.getElementById('seeCommentsButton').addEventListener('click', () => {
+        const commentsSection = document.getElementById('commentsSection');
+        commentsSection.style.display = 'block';
+
+        // Fetch and render comments here
+    });
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
