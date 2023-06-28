@@ -1,12 +1,91 @@
-
-
-<canvas id="canvas"></canvas>
-<button id="start">Start</button>
-<div id="showOnStart" style="visibility: hidden;">
-    <button id="prv-shoe-sty">&laquo; Previous</button>
-    Shoes Style
-    <button id="nxt-shoe-sty">Next &raquo;</button>
-    <button id="prv-shoe-clr">&laquo; Previous</button>
-    Shoes Color
-    <button id="nxt-shoe-clr">Next &raquo;</button>
+<div class="container">
+    <h1>Add Title</h1>
+    <p>Add instruction that will be removed once button is pressed</p>
 </div>
+<div class="d-flex mb-3 container">
+    <canvas id="canvas" class="p-2"></canvas>
+    <button id="start" class="p-2 btn btn-primary" style="width: 150px; height: 50px;">Start Avatar Edit</button>
+    <div id="showOnStart" style="visibility: hidden;" class="p-2">
+        <button id="prv-shoe-sty">&laquo; Previous</button>
+        Shoes Style <span id="shoe-sty">{{currentUser.shoeStyle}}</span>
+        <button id="nxt-shoe-sty">Next &raquo;</button>
+        <button id="prv-shoe-clr">&laquo; Previous</button>
+        Shoes Color <span id="shoe-clr">{{currentUser.shoeColor}}</span>
+        <button id="nxt-shoe-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-skn-clr">&laquo; Previous</button>
+        Skin Color <span id="skn-clr">{{currentUser.skinColor}}</span>
+        <button id="nxt-skn-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-blt-clr">&laquo; Previous</button>
+        Belt Color <span id="blt-clr">{{currentUser.beltColor}}</span>
+        <button id="nxt-blt-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-pnt-sty">&laquo; Previous</button>
+        Pants Style <span id="pnt-sty">{{currentUser.pantsStyle}}</span>
+        <button id="nxt-pnt-sty">Next &raquo;</button>
+        <button id="prv-pnt-clr">&laquo; Previous</button>
+        Pants Color <span id="pnt-clr">{{currentUser.pantsColor}}</span>
+        <button id="nxt-pnt-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-sht-sty">&laquo; Previous</button>
+        Shirt Style <span id="sht-sty">{{currentUser.shirtStyle}}</span>
+        <button id="nxt-sht-sty">Next &raquo;</button>
+        <button id="prv-sht-clr">&laquo; Previous</button>
+        Shirt Color <span id="sht-clr">{{currentUser.shirtColor}}</span>
+        <button id="nxt-sht-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-slv-sty">&laquo; Previous</button>
+        Sleeve Style <span id="slv-sty">{{currentUser.sleeveStyle}}</span>
+        <button id="nxt-slv-sty">Next &raquo;</button>
+        <button id="prv-slv-clr">&laquo; Previous</button>
+        Sleeve Color <span id="slv-clr">{{currentUser.sleeveColor}}</span>
+        <button id="nxt-slv-clr">Next &raquo;</button>
+        <br>
+        <button id="prv-har-sty">&laquo; Previous</button>
+        Hair Style <span id="har-sty">{{currentUser.hairStyle}}</span>
+        <button id="nxt-har-sty">Next &raquo;</button>
+        <button id="prv-har-clr">&laquo; Previous</button>
+        Hair Color <span id="har-clr">{{currentUser.hairColor}}</span>
+        <button id="nxt-har-clr">Next &raquo;</button>
+        <button id="prv-mth-sty">&laquo; Previous</button>
+        Mouth Style <span id="mth-sty">{{currentUser.mouthStyle}}</span>
+        <button id="nxt-mth-sty">Next &raquo;</button>
+        <br>
+        <button id="prv-nos-sty">&laquo; Previous</button>
+        Nose Style <span id="nos-sty">{{currentUser.noseStyle}}</span>
+        <button id="nxt-nos-sty">Next &raquo;</button>
+        <br>
+        <button id="prv-eye-sty">&laquo; Previous</button>
+        Eye Style <span id="eye-sty">{{currentUser.eyeStyle}}</span>
+        <button id="nxt-eye-sty">Next &raquo;</button>
+        <button id="prv-eye-clr">&laquo; Previous</button>
+        Eye Color <span id="eye-clr">{{currentUser.eyeColor}}</span>
+        <button id="nxt-eye-clr">Next &raquo;</button>
+
+        <form action="/{{currentUser.username}}/avatar" method="post">
+            <input type="number" name="shoeStyle" id="shoe-sty-inp" hidden>
+            <input type="number" name="shoeColor" id="shoe-clr-inp" hidden>
+            <input type="number" name="skinColor" id="skn-clr-inp" hidden>
+            <input type="number" name="beltColor" id="blt-clr-inp" hidden>
+            <input type="number" name="pantsColor" id="pnt-clr-inp" hidden>
+            <input type="number" name="pantsStyle" id="pnt-sty-inp" hidden>
+            <input type="number" name="shirtStyle" id="sht-sty-inp" hidden>
+            <input type="number" name="sleeveStyle" id="slv-sty-inp" hidden>
+            <input type="number" name="sleeveColor" id="slv-clr-inp" hidden>
+            <input type="number" name="shirtColor" id="sht-clr-inp" hidden>
+            <input type="number" name="hairStyle" id="har-sty-inp" hidden>
+            <input type="number" name="hairColor" id="har-clr-inp" hidden>
+            <input type="number" name="mouthStyle" id="mth-sty-inp" hidden>
+            <input type="number" name="noseStyle" id="nos-sty-inp" hidden>
+            <input type="number" name="eyeStyle" id="eye-sty-inp" hidden>
+            <input type="number" name="eyeColor" id="eye-clr-inp" hidden>
+            <input type="text" name="avatar" id="avt-src-inp" hidden>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+    
+</div>
+
+
+<script src="/js/canvascontrolls.js"></script>

@@ -1,2 +1,54 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<main class="container row align-items-start">
+    <section class="col-3">
+        <h4>Interests</h3>
+        <p>Humor</p>
+        <p>Sports</p>
+        <p>Ask</p>
+        <p>Today I...</p>
+    </section>
+    <section class="col-5">
+{{#if loggedIn}}
+        <div class="card" style="width: 55vw; margin-top: 50px;">
+            <form action="/post" method="post" name="createPost">
+            <div class="card-header">
+                <select name="theme" id="" required>
+                    <option value="">Select a Theme</option>
+                    <option value="Humor">Humor</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Ask">Ask</option>
+                    <option value="Today I...">Today I...</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <input type="text" name="title" id="" style="width: 52.5vw;" required>
+                </h5>
+                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
+                <br>
+                <input type="submit" value="Create Post">
+            </div>
+            </form>
+            <div class="card-footer">
+                {{currentUser.username}}
+            </div>
+            
+        </div>
+{{else}}
+{{/if}}
+
+        {{#each postArray}}
+        <div class="card" style="margin-top: 50px; width:55vw;">
+            <div class="card-header">{{theme}}</div>
+            <div class="card-body">
+                <a href="/post/{{_id}}"> <h5 class="card-title">{{title}}</h5> </a>
+                <p class="card-text">{{content}} <br><br> Comments: {{commentcount}}</p>            </div>
+            <div class="card-footer">
+                <a href="/{{author.username}}">{{author.username}}</a>
+            </div>
+        </div>
+        {{/each}}
+    </section>
+    <section class="col-3">
+    </section>
+</main>

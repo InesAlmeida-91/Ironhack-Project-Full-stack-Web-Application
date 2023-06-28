@@ -4,8 +4,11 @@ const postSchema = new Schema(
   {
     author: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
-    content: String,
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }]
+    //add image here maybe and limit of 200mb?
+    content: String, //put a limit of 200? or 300?
+    theme: String,
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    commentcount: {type: Number, default: 0},
   },
   {
     timestamps: true
