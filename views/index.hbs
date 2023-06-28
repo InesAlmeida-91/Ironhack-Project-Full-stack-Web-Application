@@ -41,10 +41,8 @@
         <div class="card" style="margin-top: 50px; width:55vw;">
             <div class="card-header">{{theme}}</div>
             <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">{{content}} <br><br> Comments: {{commentcount}}</p>
-                <a href="#" class="btn btn-primary">Comment</a>
-            </div>
+                <a href="/post/{{_id}}"> <h5 class="card-title">{{title}}</h5> </a>
+                <p class="card-text">{{content}} <br><br> Comments: {{commentcount}}</p>            </div>
             <div class="card-footer">
                 {{author.username}}
             </div>
