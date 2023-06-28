@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
     } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
     }
+    // console.log(req.session)
   } catch (error) {
     console.log(error);
     }

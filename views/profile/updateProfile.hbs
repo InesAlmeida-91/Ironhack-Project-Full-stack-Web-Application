@@ -1,6 +1,6 @@
 <h1>Update Profile</h1>
 
-<form action="/profile/updateProfile" method="POST">
+<form action="/profile/{{foundUser.username}}/updateProfile" method="POST">
   <label>Username</label>
   <input type="text" name="username" value="{{foundUser.username}}" required />
   <br />

@@ -8,7 +8,7 @@ const User = require('../../models/User.model');
 const { isLoggedIn } = require('../../middleware/route.guard');
 
 
-router.get("/:profile", async (req, res, next) => {
+router.get("/profile/:profile", async (req, res, next) => {
   try {
     const foundUser = await User.findOne({ username: req.params.profile });
     if(foundUser){
@@ -33,7 +33,7 @@ router.get("/:profile", async (req, res, next) => {
 //Avatar
 //Profile Model link avatar and add default
 
-router.get("/:profile/avatar", isLoggedIn, async (req, res, next) => {
+router.get("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
   try {
     const foundUser = await User.findOne({ username: req.params.profile });
     if(req.session.currentUser.username === req.params.profile){
@@ -47,22 +47,22 @@ router.get("/:profile/avatar", isLoggedIn, async (req, res, next) => {
 
 });
 
-router.post("/:profile/avatar", isLoggedIn, async (req, res, next) => {
+router.post("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
   if(req.session.currentUser.username === req.params.profile){
     await User.findOneAndUpdate({username: req.session.currentUser.username}, req.body);
-    res.redirect(`/${req.session.currentUser.username}`)
+    res.redirect(`/profile/${req.session.currentUser.username}`)
   }
   else{res.redirect('/')}
 });
 
-router.get('/:profile/updateProfile', isLoggedIn, (req, res) => {
+router.get('/profile/:profile/updateProfile', isLoggedIn, (req, res) => {
   if(req.session.currentUser.username === req.params.profile){
     res.render(`profile/updateProfile`, { foundUser: req.session.currentUser, loggedIn: true, currentUser: req.session.currentUser});
   }
   else{res.redirect('/')}
 });
 //tofix, remove password as a edit and create a get route to edit password separately
-router.post('/:profile/updateProfile', isLoggedIn, async (req, res) => {
+router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const { currentUser } = req.session;
@@ -74,13 +74,13 @@ router.post('/:profile/updateProfile', isLoggedIn, async (req, res) => {
       { new: true }
     );
     req.session.currentUser = { username, email, password };
-    res.redirect(`/${req.session.currentUser.username}`);
+    res.redirect(`/profile/${req.session.currentUser.username}`);
   } catch (error) {
     console.log(error);
   }
 });
 
-router.post('/:profile/delete', isLoggedIn, async (req, res) => {
+router.post('/profile/:profile/delete', isLoggedIn, async (req, res) => {
   try {
     const { currentUser } = req.session;
     const deletedUser = await User.findOneAndDelete({ email: currentUser.email });

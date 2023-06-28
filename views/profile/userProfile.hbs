@@ -5,13 +5,13 @@
   <img src="{{foundUser.avatar}}" alt="">
   {{#if isOwner}}
   <h3>Create/Edit your Avatar</h3>
-  <a href="/{{foundUser.username}}/avatar">here</a>
+  <a href="/profile/{{foundUser.username}}/avatar">here</a>
   
   <h3>Do you need to change your profile?</h3>
-  <a href="/{{foundUser.username}}/updateProfile">Update Profile</a>
+  <a href="/profile/{{foundUser.username}}/updateProfile">Update Profile</a>
   
   <h3>Do you want to delete your account?</h3>
-  <form action="/{{foundUser.username}}/delete" method="POST">
+  <form action="/profile/{{foundUser.username}}/delete" method="POST">
     <button onclick="return confirm('Are you sure you want to delete your profile?')"> Delete Profile </button>
   </form>
   {{/if}}
