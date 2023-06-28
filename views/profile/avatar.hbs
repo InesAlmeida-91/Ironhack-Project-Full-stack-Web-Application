@@ -63,7 +63,7 @@
         Eye Color <span id="eye-clr">{{currentUser.eyeColor}}</span>
         <button id="nxt-eye-clr">Next &raquo;</button>
 
-        <form action="/{{currentUser.username}}/avatar" method="post">
+        <form action="/profile/{{currentUser.username}}/avatar" method="post">
             <input type="number" name="shoeStyle" id="shoe-sty-inp" hidden>
             <input type="number" name="shoeColor" id="shoe-clr-inp" hidden>
             <input type="number" name="skinColor" id="skn-clr-inp" hidden>

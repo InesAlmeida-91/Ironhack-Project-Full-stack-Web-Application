@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     const latestFirst = []; 
     postArray.forEach(element => {
       latestFirst.unshift(element)
-      latestFirst[0].commentcount = element.comments.length;
+      // latestFirst[0].commentcount = element.comments.length;
     });
     if(req.session.currentUser){
       res.render('index', {postArray: latestFirst, loggedIn: true, currentUser: req.session.currentUser});
