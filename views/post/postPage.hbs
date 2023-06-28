@@ -1,14 +1,32 @@
+<br>
+<button class="btn btn-secondary" onclick="goBack()">Go Back</button>
 <div class="card" style="margin-top: 50px; width:55vw;">
     <div class="card-header">{{post.theme}}</div>
     <div class="card-body">
         <h5 class="card-title">{{post.title}}</h5>
         <p class="card-text">{{post.content}} <br><br> Comments: {{post.commentcount}}</p>
-        <a href="#" class="btn btn-primary" id="addCommentButton">Add Comment</a>
-        <a href="#" class="btn btn-primary" id="seeCommentsButton">See Comments</a>
-        <button class="btn btn-secondary" onclick="goBack()">Go Back</button>
+        {{!-- <a href="#" class="btn btn-primary" id="addCommentButton">Add Comment</a> --}}
+        {{!-- <a href="#" class="btn btn-primary" id="seeCommentsButton">See Comments</a> --}}
+        
     </div>
+    
+    {{!-- {{#each comment}} --}}
+    Comments: 
+    <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item - Athor</li>
+            <li class="list-group-item">A second item - Author</li>
+            <li class="list-group-item">A third item - Author</li>
+        </ul>
+    </div>
+
+    <form action="/post/{{post.id}}" method="post" name="addComment">
+        <textarea name="content" id="addComment" rows="2" style="resize: none; width:52.5vw;" required></textarea>
+        <br>
+        <input type="submit" value="Add Comment" class="btn btn-primary">
+    </form>
     <div class="card-footer">
-        {{post.author.username}}
+        Author: {{post.author.username}}
     </div>
 </div>
 

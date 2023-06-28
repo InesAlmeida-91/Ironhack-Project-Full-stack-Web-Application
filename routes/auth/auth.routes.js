@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
       });
     }
     const user = await User.findOne({ email });
-    console.log('user', user);
+    // console.log('user', user);
     if (!user) {
       res.render('auth/login', {
         errorMessage: 'Email is not registered. Try with another email.'

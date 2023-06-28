@@ -20,13 +20,13 @@ router.post("/post", async (req, res, next) => {
 
 router.get("/post/:id", async (req, res, next) => {
   try {
-    if (req.session.currentUser) {
-      const postId = req.params.id;
-      const post = await Post.findById(postId).populate('author');
-
-      res.render('post/postPage', { post });
+    const postId = req.params.id;
+    const post = await Post.findById(postId).populate('author');
+    if (req.session.currentUser)
+    {
+      res.render('post/postPage', { post: post, loggedIn: true, currentUser: req.session.currentUser });
     } else {
-      res.redirect("/");
+      res.render('post/postPage', { post: post });
     }
   } catch (error) {
     next(error);
