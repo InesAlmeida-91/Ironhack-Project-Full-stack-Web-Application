@@ -28,10 +28,6 @@ router.get("/profile/:profile", async (req, res, next) => {
     }
 });
 
-//tofix
-//
-//Avatar
-//Profile Model link avatar and add default
 
 router.get("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
   try {
@@ -61,7 +57,7 @@ router.get('/profile/:profile/updateProfile', isLoggedIn, (req, res) => {
   }
   else{res.redirect('/')}
 });
-//tofix, remove password as a edit and create a get route to edit password separately
+
 router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
   try {
     const { username, email, password } = req.body;
