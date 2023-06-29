@@ -4,7 +4,7 @@ const postSchema = new Schema(
   {
     author: { type: Schema.Types.ObjectId, ref: "User" },
     title: String,
-    //add image here maybe and limit of 200mb?
+    imageUrl: String,
     content: String, //put a limit of 200? or 300?
     theme: String,
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
