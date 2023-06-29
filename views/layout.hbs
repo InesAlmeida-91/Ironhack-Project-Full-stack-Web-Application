@@ -16,7 +16,7 @@
       <div class="container-fluid">
          <a href="/" class="navbar-brand">Super SocialNetwork</a>
          <ul class="navbar-nav">
-            {{#if loggedIn}}
+            {{#if currentUser}}
              <li class="nav-item">
                <a href="/profile/{{currentUser.username}}" class="nav-link">{{currentUser.username}}</a>
             </li>

@@ -20,9 +20,10 @@ router.post("/post", fileUploader.single('post-image'), async (req, res, next) =
         imageUrl: imageUrl,
         content: req.body.content,
         theme: req.body.theme,
+
         commentcount: 0,
       });
-      res.redirect('/');
+      res.redirect("/");
     } else {
       res.redirect("/");
     }
@@ -38,7 +39,7 @@ router.get("/post/:id", async (req, res, next) => {
     const loadComments = await Comment.find({Post: postId}).populate('author')
     if (req.session.currentUser)
     {
-      res.render('post/postPage', { post: post, comment: loadComments, loggedIn: true, currentUser: req.session.currentUser });
+      res.render('post/postPage', { post: post, comment: loadComments, currentUser: req.session.currentUser });
     } else {
       res.render('post/postPage', { post: post, comment: loadComments });
     }
@@ -57,8 +58,10 @@ router.post("/post/:id/comment", async (req, res, next) => {
         content: req.body.content,
       })
       const currentPost = await Post.findById(req.params.id);
-      commentIncrease = currentPost.commentcount++;
-      const updatePost = await Post.findByIdAndUpdate(req.params.id, commentIncrease);
+      // console.log(currentPost)
+      const commentIncrease = currentPost.commentcount + 1;
+      // console.log(commentIncrease)
+      await Post.findByIdAndUpdate(req.params.id, {commentcount: commentIncrease});
       res.redirect(`/post/${req.params.id}`)
     }
     else {res.redirect("/");}

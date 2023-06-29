@@ -21,7 +21,7 @@
                 </ul>
             </div>
         
-    {{#if loggedIn}}
+    {{#if currentUser}}
         <form action="/post/{{post.id}}/comment" method="post" name="addComment" style="margin-bottom: 10px;">
             <textarea name="content" id="addComment" rows="1" style="resize: none; width:52.5vw;" required></textarea>
             <br>

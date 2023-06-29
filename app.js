@@ -38,6 +38,9 @@ app.use("/", profileRoutes);
 const postRoutes = require("./routes/post/post.routes");
 app.use("/", postRoutes);
 
+const filteredRoutes = require("./routes/filtered.routes");
+app.use("/", filteredRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
