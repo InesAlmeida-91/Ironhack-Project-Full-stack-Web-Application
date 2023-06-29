@@ -4,13 +4,16 @@ const router = express.Router();
 const Post = require('../../models/Post.model');
 const Comment = require('../../models/Comment.model');
 const User = require('../../models/User.model');
+const fileUploader = require('../../config/cloudinary.config');
 
-router.post("/post", async (req, res, next) => {
+
+router.post("/post", fileUploader.single('post-image'), async (req, res, next) => {
   try {
     if(req.session.currentUser){
       await Post.create({
         author: req.session.currentUser._id,
         title: req.body.title,
+        imageUrl: req.file.path,
         content: req.body.content,
         theme: req.body.theme,
         commentcount: 0,
