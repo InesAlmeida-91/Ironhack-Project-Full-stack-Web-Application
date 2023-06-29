@@ -9,20 +9,24 @@ const fileUploader = require('../../config/cloudinary.config');
 
 router.post("/post", fileUploader.single('post-image'), async (req, res, next) => {
   try {
-    if(req.session.currentUser){
+    if (req.session.currentUser) {
+      let imageUrl = '';
+      if (req.file) {
+        imageUrl = req.file.path;
+      }
       await Post.create({
         author: req.session.currentUser._id,
         title: req.body.title,
-        imageUrl: req.file.path,
+        imageUrl: imageUrl,
         content: req.body.content,
         theme: req.body.theme,
         commentcount: 0,
-      })  
-      res.redirect('/')
+      });
+      res.redirect('/');
+    } else {
+      res.redirect("/");
     }
-    else {res.redirect("/");}
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 });
