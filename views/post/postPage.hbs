@@ -12,23 +12,26 @@
     
         </div>
     
-        {{!-- {{#each comment}} --}}
+        
         <div class="container">
             <h6>Comments:</h6>
             <div class="card" style="width: 53vw;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item - Athor</li>
-                    <li class="list-group-item">A second item - Author</li>
-                    <li class="list-group-item">A third item - Author</li>
+                    {{#each comment}}
+                    <li class="list-group-item">{{content}} - {{author.username}}</li>
+                    {{/each}}
+                    {{!-- <li class="list-group-item">A second item - Author</li>
+                    <li class="list-group-item">A third item - Author</li> --}}
                 </ul>
             </div>
         
-    
-        <form action="/post/{{post.id}}" method="post" name="addComment" style="margin-bottom: 10px;">
+    {{#if loggedIn}}
+        <form action="/post/{{post.id}}/comment" method="post" name="addComment" style="margin-bottom: 10px;">
             <textarea name="content" id="addComment" rows="1" style="resize: none; width:52.5vw;" required></textarea>
             <br>
             <input type="submit" value="Add Comment" class="btn btn-primary">
         </form>
+    {{/if}}
         </div>
         <div class="card-footer">
             Author: <a href="/profile/{{post.author.username}}">{{post.author.username}}</a>
