@@ -21,7 +21,7 @@ router.post("/signup", async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, salt);
     const userFromDB = await User.create({username, email, passwordHash: hashedPassword});
     req.session.currentUser = {username, email};
-    res.redirect('/profile');
+    res.redirect(`/profile/${req.session.currentuser/username}`);
   } catch(error){
       res.render('auth/signup', {errorMessage: 'invalid username or email please try again'})
       console.log(error);
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
       const { username, email } = user;
       req.session.currentUser = user;
       user.loggedIn = true; 
-      await user.save();
+      // await user.save();
       res.redirect('/');
     } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
