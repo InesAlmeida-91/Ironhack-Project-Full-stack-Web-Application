@@ -1,15 +1,15 @@
 <main class="container row align-items-start">
     <section class="col-3">
         <h4>Interests</h3>
-        <p>Humor</p>
-        <p>Sports</p>
-        <p>Ask</p>
-        <p>Today I...</p>
+        <p><a href="/humor">Humor</a></p>
+        <p><a href="/sports">Sports</a></p>
+        <p><a href="/ask">Ask</a></p>
+        <p><a href="/todayi">Today I...</a></p>
     </section>
     <section class="col-5">
 {{#if currentUser}}
         <div class="card" style="width: 55vw; margin-top: 50px;">
-            <form action="/post" method="post" name="createPost">
+            <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
             <div class="card-header">
                 <select name="theme" id="" required>
                     <option value="">Select a Theme</option>
@@ -25,6 +25,9 @@
                     <input type="text" name="title" id="" style="width: 52.5vw;" required>
                 </h5>
                 <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
+                <label>Image:
+                <input type="file" name="post-image" class="form-control-file" />
+                </label>
                 <br>
                 <input type="submit" value="Create Post">
             </div>
@@ -42,7 +45,10 @@
             <div class="card-header">{{theme}}</div>
             <div class="card-body">
                 <a href="/post/{{_id}}"> <h5 class="card-title">{{title}}</h5> </a>
-                <p class="card-text">{{content}} <br><br> Comments: {{commentcount}}</p>            </div>
+                <p class="card-text">{{content}} <br>
+                <img src="{{imageUrl}}">
+                <br> Comments: {{commentcount}}</p>                
+            </div>
             <div class="card-footer">
                 <a href="/profile/{{author.username}}">{{author.username}}</a>
             </div>
