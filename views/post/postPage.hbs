@@ -1,15 +1,11 @@
 <div class="container">
     
-    <button class="btn btn-secondary" onclick="goBack()" style="margin-top: 50px;">Go Back</button>
+<button class="btn btn-secondary" onclick="goBack()" style="margin-top: 50px;">Go Back</button>
     <div class="card" style="margin-top: 50px; width:55vw;">
         <div class="card-header">{{post.theme}}</div>
         <div class="card-body">
             <h4 class="card-title">{{post.title}}</h4>
-            <p class="card-text">{{post.content}} 
-            {{!-- <br><br> Comments: {{post.commentcount}}</p> --}}
-            {{!-- <a href="#" class="btn btn-primary" id="addCommentButton">Add Comment</a> --}}
-            {{!-- <a href="#" class="btn btn-primary" id="seeCommentsButton">See Comments</a> --}}
-    
+            <p class="card-text">{{post.content}}     
         </div>
     
         
@@ -18,10 +14,8 @@
             <div class="card" style="width: 53vw;">
                 <ul class="list-group list-group-flush">
                     {{#each comment}}
-                    <li class="list-group-item">{{content}} - {{author.username}}</li>
+                    <li class="list-group-item">{{content}} - Comment by: {{author.username}}</li>
                     {{/each}}
-                    {{!-- <li class="list-group-item">A second item - Author</li>
-                    <li class="list-group-item">A third item - Author</li> --}}
                 </ul>
             </div>
         
@@ -43,12 +37,10 @@
     document.getElementById('seeCommentsButton').addEventListener('click', () => {
         const commentsSection = document.getElementById('commentsSection');
         commentsSection.style.display = 'block';
-
-        // Fetch and render comments here
     });
 
     function goBack() {
-        window.history.back();
-    }
+    window.location.href = "/";
+}
 </script>
 
