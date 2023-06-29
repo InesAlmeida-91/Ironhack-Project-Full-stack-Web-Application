@@ -50,8 +50,10 @@ router.post("/post/:id/comment", async (req, res, next) => {
         content: req.body.content,
       })
       const currentPost = await Post.findById(req.params.id);
-      commentIncrease = currentPost.commentcount++;
-      const updatePost = await Post.findByIdAndUpdate(req.params.id, commentIncrease);
+      // console.log(currentPost)
+      const commentIncrease = currentPost.commentcount + 1;
+      // console.log(commentIncrease)
+      await Post.findByIdAndUpdate(req.params.id, {commentcount: commentIncrease});
       res.redirect(`/post/${req.params.id}`)
     }
     else {res.redirect("/");}
