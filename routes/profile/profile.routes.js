@@ -14,9 +14,9 @@ router.get("/profile/:profile", async (req, res, next) => {
     if(foundUser){
       if(req.session.currentUser){
         if(req.session.currentUser.username === req.params.profile){
-          res.render('profile/userProfile', {foundUser: foundUser, isOwner: true, loggedIn: true, currentUser: req.session.currentUser})  
+          res.render('profile/userProfile', {foundUser: foundUser, isOwner: true, currentUser: req.session.currentUser})  
         }
-        else{res.render('profile/userProfile', {foundUser: foundUser, loggedIn: true, currentUser: req.session.currentUser})}
+        else{res.render('profile/userProfile', {foundUser: foundUser, currentUser: req.session.currentUser})}
       }
       else{
         res.render('profile/userProfile', {foundUser: foundUser})
@@ -53,7 +53,7 @@ router.post("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
 
 router.get('/profile/:profile/updateProfile', isLoggedIn, (req, res) => {
   if(req.session.currentUser.username === req.params.profile){
-    res.render(`profile/updateProfile`, { foundUser: req.session.currentUser, loggedIn: true, currentUser: req.session.currentUser});
+    res.render(`profile/updateProfile`, { foundUser: req.session.currentUser, currentUser: req.session.currentUser});
   }
   else{res.redirect('/')}
 });
@@ -75,7 +75,7 @@ router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
     console.log(error);
   }
 });
-
+//don't forget to delete all the post and comments
 router.post('/profile/:profile/delete', isLoggedIn, async (req, res) => {
   try {
     const { currentUser } = req.session;

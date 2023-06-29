@@ -13,7 +13,7 @@ router.post("/post", async (req, res, next) => {
         title: req.body.title,
         content: req.body.content,
         theme: req.body.theme,
-        commentcount: 0,
+        // commentcount: 0,
       })  
       res.redirect('/')
     }
@@ -31,7 +31,7 @@ router.get("/post/:id", async (req, res, next) => {
     const loadComments = await Comment.find({Post: postId}).populate('author')
     if (req.session.currentUser)
     {
-      res.render('post/postPage', { post: post, comment: loadComments, loggedIn: true, currentUser: req.session.currentUser });
+      res.render('post/postPage', { post: post, comment: loadComments, currentUser: req.session.currentUser });
     } else {
       res.render('post/postPage', { post: post, comment: loadComments });
     }
