@@ -74,7 +74,6 @@ router.get("/post/:id/edit", async (req, res, next) => {
 });
 
 router.post("/post/:id/edit", async (req, res, next) => {
-  console.log(req.body)
   try {
     const confirmUser = await Post.findById(req.params.id).populate('author')
     if (confirmUser.author.id === req.session.currentUser._id) {
@@ -84,6 +83,21 @@ router.post("/post/:id/edit", async (req, res, next) => {
         theme: req.body.theme,
       });
       res.redirect(`/post/${req.params.id}`);
+    } else {
+      res.redirect("/");
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/post/:id/delete", async (req, res, next) => {
+  try {
+    const confirmUser = await Post.findById(req.params.id).populate('author')
+    if (confirmUser.author.id === req.session.currentUser._id) {
+      await Comment.deleteMany({Post: confirmUser.id})
+      await Post.findByIdAndDelete(req.params.id);
+      res.redirect(`/`);
     } else {
       res.redirect("/");
     }
@@ -137,6 +151,9 @@ router.post("/comment/:id/delete", async (req, res, next) => {
     const commentFind = await Comment.findById(req.params.id).populate('author').populate('Post');
     if(req.session.currentUser){
       if(req.session.currentUser.username === commentFind.author.username){
+        const ccount = await Post.findOne({_id: commentFind.Post.id});
+        const newCount = ccount.commentcount - 1;
+        const newPost = await Post.findOneAndUpdate({_id: commentFind.Post.id} ,{commentcount: newCount})
         await Comment.findByIdAndDelete(req.params.id)
         res.redirect(`/post/${commentFind.Post.id}`)
       }

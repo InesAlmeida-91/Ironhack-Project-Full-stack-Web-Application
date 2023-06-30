@@ -5,7 +5,12 @@
         <div class="card-header">{{post.theme}}</div>
         <div class="card-body">
             {{#if isOwner}}
-            <h6><a href="/post/{{post.id}}/edit">Edit</a></h6>
+            <h6>
+                <a href="/post/{{post.id}}/edit">Edit</a>
+                <form action="/post/{{post.id}}/delete" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </h6>
             {{/if}}
             <h4 class="card-title">{{post.title}}</h4>
             <p class="card-text">{{post.content}}
