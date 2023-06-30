@@ -22,6 +22,10 @@ Users can ask questions on any topic and receive responses from other users. Whe
 
 Share your daily experiences, thoughts, or any significant events happening in your life through this feature. Connect with friends and followers by sharing updates about your day and engaging in conversations.
 
+6. Avatar
+
+Stylize your digital self and make an avatar on Trendr. Whether you want a complete mirror of yourself or to let your creative juice flow, you can do so by making your very own profile character.
+
 
 # Usage Instructions
 # Signing Up
@@ -36,6 +40,8 @@ Once you have signed up, click on the "Log In" button and enter your credentials
 
 To create a post, start by logging in to your account. Once logged in, locate the text box at the top of your home page. Click inside the text box and begin typing your post, sharing your thoughts, feelings, or any information you want to convey. You can also add photos by clicking on the respective icons below the text box. Review your post for any changes or errors, and then click the "Post" button to publish it. Your post will appear on your timeline and in the news feeds of the people.
 
+# Avatar
+Creating your own avatar on Trendr is a fun and personalized way to represent yourself in the digital world. To get started, log in to your Trendr account and navigate to the "Avatar" section in your profile, located at the link when you click your user name on the top right. Follow the on-screen prompts to customize your avatar's appearance, including hairstyle, facial features, clothing, and more. You can make it look as much like you as you want or be as creative as you like! Once you're satisfied with your avatar, save it, and it will become available for use across Trendr, allowing you to express yourself uniquely in comments, messages, and even as a profile picture. Enjoy creating your avatar and have fun sharing your new digital persona with friends and family!
 
 #
 Throughout the website, you can like and comment on posts from other users. Engaging in conversations, following interesting profiles, and building connections within the Trendr community.
