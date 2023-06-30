@@ -74,6 +74,7 @@ router.get("/post/:id/edit", async (req, res, next) => {
 });
 
 router.post("/post/:id/edit", async (req, res, next) => {
+  console.log(req.body)
   try {
     const confirmUser = await Post.findById(req.params.id).populate('author')
     if (confirmUser.author.id === req.session.currentUser._id) {
@@ -120,6 +121,23 @@ router.post("/comment/:id", async (req, res, next) => {
     if(req.session.currentUser){
       if(req.session.currentUser.username === commentFind.author.username){
         await Comment.findByIdAndUpdate(req.params.id, req.body)
+        res.redirect(`/post/${commentFind.Post.id}`)
+      }
+      res.redirect("/");
+    }
+    else {res.redirect("/");}
+  }
+  catch (error) {
+    next(error);
+  }
+});
+
+router.post("/comment/:id/delete", async (req, res, next) => {
+  try {
+    const commentFind = await Comment.findById(req.params.id).populate('author').populate('Post');
+    if(req.session.currentUser){
+      if(req.session.currentUser.username === commentFind.author.username){
+        await Comment.findByIdAndDelete(req.params.id)
         res.redirect(`/post/${commentFind.Post.id}`)
       }
       res.redirect("/");
