@@ -1,0 +1,44 @@
+<div class="container">
+    
+{{!-- <button class="btn btn-secondary" onclick="goBack()" style="margin-top: 50px;">Go Back</button> --}}
+    <div class="card" style="margin-top: 50px; width:55vw;">
+        <form action="/post/{{post.id}}/edit" method="post" name="createPost">
+            <div class="card-header">
+                <select name="theme" id="" required>
+                    <option value="">Select a Theme </option>
+                    <option value="Humor">Humor</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Ask">Ask</option>
+                    <option value="Today I...">Today I...</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <input type="text" name="title" id="" style="width: 52.5vw;" value="{{post.title}}" required>
+                </h5>
+                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required>{{post.content}}</textarea>
+                {{!-- <label>Image:
+                <input type="file" name="post-image" class="form-control-file" />
+                </label> --}}
+                <br>
+                <input type="submit" value="Edit Post">
+            </div>
+        </form>
+        <div class="card-footer">
+            Author: <a href="/profile/{{post.author.username}}">{{post.author.username}}</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('seeCommentsButton').addEventListener('click', () => {
+        const commentsSection = document.getElementById('commentsSection');
+        commentsSection.style.display = 'block';
+    });
+
+    function goBack() {
+    window.location.href = "/";
+}
+</script>
+

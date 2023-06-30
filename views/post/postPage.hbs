@@ -4,20 +4,22 @@
     <div class="card" style="margin-top: 50px; width:55vw;">
         <div class="card-header">{{post.theme}}</div>
         <div class="card-body">
+            {{#if isOwner}}
+            <h6><a href="/post/{{post.id}}/edit">Edit</a></h6>
+            {{/if}}
             <h4 class="card-title">{{post.title}}</h4>
             <p class="card-text">{{post.content}}
             <br>
             <img src="{{post.imageUrl}}">     
-        </div>
-    
-        
+        </div>        
         <div class="container">
             <h6>Comments:</h6>
             <div class="card" style="width: 53vw;">
                 <ul class="list-group list-group-flush">
                     {{#each comment}}
-                    <li class="list-group-item">{{content}} - Comment by: {{author.username}}</li>
+                    <li class="list-group-item">{{content}} - Comment by: {{author.username}} {{#if owner}}Found Owner{{/if}}</li>
                     {{/each}}
+
                 </ul>
             </div>
         

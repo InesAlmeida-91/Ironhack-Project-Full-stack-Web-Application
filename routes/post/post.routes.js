@@ -36,8 +36,16 @@ router.get("/post/:id", async (req, res, next) => {
   try {
     const postId = req.params.id;
     const post = await Post.findById(postId).populate('author');
-    const loadComments = await Comment.find({Post: postId}).populate('author')
-    if (req.session.currentUser)
+    const loadComments = await Comment.find({Post: postId}).populate('author');
+    for(i=0; i < loadComments.length ;i++){
+      if(loadComments[i].author.username === req.session.currentUser.username){loadComments[i].owner = true;}
+    }
+    const confirmUser = await Post.findById(req.params.id).populate('author')
+    if (confirmUser.author.id === req.session.currentUser._id)
+    {
+      res.render('post/postPage', { post: post, comment: loadComments, isOwner: true, currentUser: req.session.currentUser });
+    }
+    else if (req.session.currentUser)
     {
       res.render('post/postPage', { post: post, comment: loadComments, currentUser: req.session.currentUser });
     } else {
@@ -67,6 +75,41 @@ router.post("/post/:id/comment", async (req, res, next) => {
     else {res.redirect("/");}
   }
   catch (error) {
+    next(error);
+  }
+});
+
+router.get("/post/:id/edit", async (req, res, next) => {
+  try {
+    const postId = req.params.id;
+    const post = await Post.findById(postId).populate('author');
+    const loadComments = await Comment.find({Post: postId}).populate('author')
+    const confirmUser = await Post.findById(req.params.id).populate('author')
+    if (confirmUser.author.id === req.session.currentUser._id)
+    {
+      res.render('post/postEdit', { post: post, comment: loadComments, currentUser: req.session.currentUser });
+    } else {
+      res.redirect(`/post/${req.params.id}`);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/post/:id/edit", async (req, res, next) => {
+  try {
+    const confirmUser = await Post.findById(req.params.id).populate('author')
+    if (confirmUser.author.id === req.session.currentUser._id) {
+      await Post.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        content: req.body.content,
+        theme: req.body.theme,
+      });
+      res.redirect(`/post/${req.params.id}`);
+    } else {
+      res.redirect("/");
+    }
+  } catch (error) {
     next(error);
   }
 });
