@@ -75,4 +75,22 @@ router.get("/todayi", async (req, res, next) => {
     }
 });
 
+router.get("/others", async (req, res, next) => {
+  try{
+    const postArray = await Post.find({theme: 'Others'}).populate('author')
+    const latestFirst = []; 
+    postArray.forEach(element => {
+      latestFirst.unshift(element)
+    });
+    if(req.session.currentUser){
+      res.render('index', {postArray: latestFirst, currentUser: req.session.currentUser});
+    }
+    else {res.render("index", {postArray: latestFirst});}
+  }
+  catch(error){
+    res.render('auth/signup', {errorMessage: 'invalid username or email'})
+    console.log(error);
+  }
+});
+
 module.exports = router;

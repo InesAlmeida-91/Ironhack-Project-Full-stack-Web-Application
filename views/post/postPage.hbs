@@ -4,20 +4,61 @@
     <div class="card" style="margin-top: 50px; width:55vw;">
         <div class="card-header">{{post.theme}}</div>
         <div class="card-body">
+            {{#if isOwner}}
+            <h6>
+                <a href="/post/{{post.id}}/edit">Edit</a>
+                <form action="/post/{{post.id}}/delete" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </h6>
+            {{/if}}
             <h4 class="card-title">{{post.title}}</h4>
             <p class="card-text">{{post.content}}
             <br>
             <img src="{{post.imageUrl}}">     
-        </div>
-    
-        
+        </div>        
         <div class="container">
             <h6>Comments:</h6>
             <div class="card" style="width: 53vw;">
                 <ul class="list-group list-group-flush">
                     {{#each comment}}
-                    <li class="list-group-item">{{content}} - Comment by: {{author.username}}</li>
+                    <li class="list-group-item">{{content}} - Comment by: {{author.username}} {{#if owner}}
+                        
+                        
+                       
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#{{id}}">
+  Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="{{id}}Label">
+            Edit Comment
+        </h1>
+        <form action="/comment/{{id}}/delete" method="post">
+                <input type="submit" class="btn btn-tertiary" value="Delete">
+            </form>
+        {{!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+      </div>
+      <div class="modal-body">
+        <form action="/comment/{{id}}" method="post">
+            <input type="text" name="content" id="" value="{{content}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save Changes">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+                            
+                        {{/if}}</li>
                     {{/each}}
+
                 </ul>
             </div>
         
