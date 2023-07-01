@@ -3,9 +3,9 @@
     <p>Add instruction that will be removed once button is pressed</p>
 </div>
 <div class="d-flex mb-3 container">
-    <canvas id="canvas" class="p-2"></canvas>
+    <canvas id="canvas" class="p-2" hidden></canvas>
     <button id="start" class="p-2 btn btn-primary" style="width: 150px; height: 50px;">Start Avatar Edit</button>
-    <div id="showOnStart" style="visibility: hidden;" class="p-2">
+    <div id="showOnStart" class="p-2" hidden>
         <button id="prv-shoe-sty">&laquo; Previous</button>
         Shoes Style <span id="shoe-sty">{{currentUser.shoeStyle}}</span>
         <button id="nxt-shoe-sty">Next &raquo;</button>
