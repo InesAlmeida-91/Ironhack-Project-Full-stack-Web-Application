@@ -9,9 +9,19 @@
     </section>
     <section class="col-5">
 {{#if currentUser}}
-        <div class="card" style="width: 55vw; margin-top: 50px;">
-            <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
-            <div class="card-header">
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin: 50px 0 0 65%;">
+  Create a Post!
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
                 <select name="theme" id="" required>
                     <option value="">Select a Theme</option>
                     <option value="Humor">Humor</option>
@@ -20,24 +30,27 @@
                     <option value="Today I...">Today I...</option>
                     <option value="Others">Others</option>
                 </select>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <input type="text" name="title" id="" style="width: 52.5vw;" required>
-                </h5>
-                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
-                <label>Image:
-                <input type="file" name="post-image" class="form-control-file" />
-                </label>
-                <br>
-                <input type="submit" value="Create Post">
-            </div>
-            </form>
-            <div class="card-footer">
-                {{currentUser.username}}
-            </div>
-            
-        </div>
+            </h1>
+        {{!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+      </div>
+      <div class="modal-body">
+        <h5 class="card-title">
+            <input type="text" name="title" id="" style="width: 100%;" required>
+        </h5>
+        <textarea name="content" id="createPost" rows="10" style="resize: none; width: 100%;" required></textarea>
+        <label>Image:
+        <input type="file" name="post-image" class="form-control-file" />
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" value="Create Post" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{else}}
 {{/if}}
 
