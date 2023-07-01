@@ -2,67 +2,75 @@
   <h1 style="margin-top: 70px; color: #FF9800; font-weight: bold;">Create your Avatar</h1>
    {{!--<p>Add instruction that will be removed once button is pressed</p>--}} 
 </div>
+
 <div class="d-flex mb-3 container">
-    <canvas id="canvas" class="p-2"></canvas>
+    <canvas id="canvas" class="p-2" hidden></canvas>
         <button id="start" class="p-2 btn btn-primary" style="width: 230px; height: 50px; background-color: #FF9800; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800';">Start Avatar Edit</button>
-    <div id="showOnStart" style="visibility: hidden;" class="p-2">
-        <button id="prv-shoe-sty">&laquo; Previous</button>
-        Shoes Style <span id="shoe-sty">{{currentUser.shoeStyle}}</span>
-        <button id="nxt-shoe-sty">Next &raquo;</button>
-        <button id="prv-shoe-clr">&laquo; Previous</button>
-        Shoes Color <span id="shoe-clr">{{currentUser.shoeColor}}</span>
-        <button id="nxt-shoe-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-skn-clr">&laquo; Previous</button>
-        Skin Color <span id="skn-clr">{{currentUser.skinColor}}</span>
-        <button id="nxt-skn-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-blt-clr">&laquo; Previous</button>
-        Belt Color <span id="blt-clr">{{currentUser.beltColor}}</span>
-        <button id="nxt-blt-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-pnt-sty">&laquo; Previous</button>
-        Pants Style <span id="pnt-sty">{{currentUser.pantsStyle}}</span>
-        <button id="nxt-pnt-sty">Next &raquo;</button>
-        <button id="prv-pnt-clr">&laquo; Previous</button>
-        Pants Color <span id="pnt-clr">{{currentUser.pantsColor}}</span>
-        <button id="nxt-pnt-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-sht-sty">&laquo; Previous</button>
-        Shirt Style <span id="sht-sty">{{currentUser.shirtStyle}}</span>
-        <button id="nxt-sht-sty">Next &raquo;</button>
-        <button id="prv-sht-clr">&laquo; Previous</button>
-        Shirt Color <span id="sht-clr">{{currentUser.shirtColor}}</span>
-        <button id="nxt-sht-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-slv-sty">&laquo; Previous</button>
-        Sleeve Style <span id="slv-sty">{{currentUser.sleeveStyle}}</span>
-        <button id="nxt-slv-sty">Next &raquo;</button>
-        <button id="prv-slv-clr">&laquo; Previous</button>
-        Sleeve Color <span id="slv-clr">{{currentUser.sleeveColor}}</span>
-        <button id="nxt-slv-clr">Next &raquo;</button>
-        <br>
-        <button id="prv-har-sty">&laquo; Previous</button>
-        Hair Style <span id="har-sty">{{currentUser.hairStyle}}</span>
-        <button id="nxt-har-sty">Next &raquo;</button>
-        <button id="prv-har-clr">&laquo; Previous</button>
-        Hair Color <span id="har-clr">{{currentUser.hairColor}}</span>
-        <button id="nxt-har-clr">Next &raquo;</button>
+    <div id="showOnStart" class="p-2" hidden>
+        <div class="d-flex justify-content-between">
+            <button id="prv-har-sty">&laquo; Previous</button>
+            Hair Style <span id="har-sty">{{currentUser.hairStyle}}</span>
+            <button id="nxt-har-sty">Next &raquo;</button>
+            <button id="prv-har-clr">&laquo; Previous</button>
+            Hair Color <span id="har-clr">{{currentUser.hairColor}}</span>
+            <button id="nxt-har-clr">Next &raquo;</button>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button id="prv-eye-sty">&laquo; Previous</button>
+            Eye Style <span id="eye-sty">{{currentUser.eyeStyle}}</span>
+            <button id="nxt-eye-sty">Next &raquo;</button>
+            <button id="prv-eye-clr">&laquo; Previous</button>
+            Eye Color <span id="eye-clr">{{currentUser.eyeColor}}</span>
+            <button id="nxt-eye-clr">Next &raquo;</button>
+        </div>
+        <div>
+            <button id="prv-nos-sty">&laquo; Previous</button>
+            Nose Style <span id="nos-sty">{{currentUser.noseStyle}}</span>
+            <button id="nxt-nos-sty">Next &raquo;</button>
+        </div>
+
         <button id="prv-mth-sty">&laquo; Previous</button>
         Mouth Style <span id="mth-sty">{{currentUser.mouthStyle}}</span>
         <button id="nxt-mth-sty">Next &raquo;</button>
-        <br>
-        <button id="prv-nos-sty">&laquo; Previous</button>
-        Nose Style <span id="nos-sty">{{currentUser.noseStyle}}</span>
-        <button id="nxt-nos-sty">Next &raquo;</button>
-        <br>
-        <button id="prv-eye-sty">&laquo; Previous</button>
-        Eye Style <span id="eye-sty">{{currentUser.eyeStyle}}</span>
-        <button id="nxt-eye-sty">Next &raquo;</button>
-        <button id="prv-eye-clr">&laquo; Previous</button>
-        Eye Color <span id="eye-clr">{{currentUser.eyeColor}}</span>
-        <button id="nxt-eye-clr">Next &raquo;</button>
-
+        <div class="d-flex justify-content-between">
+            <button id="prv-sht-sty">&laquo; Previous</button>
+            Shirt Style <span id="sht-sty">{{currentUser.shirtStyle}}</span>
+            <button id="nxt-sht-sty">Next &raquo;</button>
+            <button id="prv-sht-clr">&laquo; Previous</button>
+            Shirt Color <span id="sht-clr">{{currentUser.shirtColor}}</span>
+            <button id="nxt-sht-clr">Next &raquo;</button>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button id="prv-slv-sty">&laquo; Previous</button>
+            Sleeve Style <span id="slv-sty">{{currentUser.sleeveStyle}}</span>
+            <button id="nxt-slv-sty">Next &raquo;</button>
+            <button id="prv-slv-clr">&laquo; Previous</button>
+            Sleeve Color <span id="slv-clr">{{currentUser.sleeveColor}}</span>
+            <button id="nxt-slv-clr">Next &raquo;</button>
+        </div>
+        <button id="prv-blt-clr">&laquo; Previous</button>
+        Belt Color <span id="blt-clr">{{currentUser.beltColor}}</span>
+        <button id="nxt-blt-clr">Next &raquo;</button>
+        <div class="d-flex justify-content-between">
+            <button id="prv-pnt-sty">&laquo; Previous</button>
+            Pants Style <span id="pnt-sty">{{currentUser.pantsStyle}}</span>
+            <button id="nxt-pnt-sty">Next &raquo;</button>
+            <button id="prv-pnt-clr">&laquo; Previous</button>
+            Pants Color <span id="pnt-clr">{{currentUser.pantsColor}}</span>
+            <button id="nxt-pnt-clr">Next &raquo;</button>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button id="prv-shoe-sty">&laquo; Previous</button>
+            Shoes Style <span id="shoe-sty">{{currentUser.shoeStyle}}</span>
+            <button id="nxt-shoe-sty">Next &raquo;</button>
+            <button id="prv-shoe-clr">&laquo; Previous</button>
+            Shoes Color <span id="shoe-clr">{{currentUser.shoeColor}}</span>
+            <button id="nxt-shoe-clr">Next &raquo;</button>
+        </div>
+        <button id="prv-skn-clr">&laquo; Previous</button>
+        Skin Color <span id="skn-clr">{{currentUser.skinColor}}</span>
+        <button id="nxt-skn-clr">Next &raquo;</button>
+       
         <form action="/profile/{{currentUser.username}}/avatar" method="post">
             <input type="number" name="shoeStyle" id="shoe-sty-inp" hidden>
             <input type="number" name="shoeColor" id="shoe-clr-inp" hidden>
