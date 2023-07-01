@@ -73,27 +73,24 @@
     <section class="" style="margin-top: 100px;">
 <div class="card" style="width: 16vw; margin-left: 2vw;">
     <div class="card-header">
-        <h3>NEWS CORNER</h3>
+        <h3>Random Useless Facts</h3>
     </div>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{news.[0].image_url}}" class="d-block w-100" alt="...">
-            <h5>{{news.[0].title}}</h5>
-            <p>{{news.[0].snippet}}</p>
-            <p><a href="{{news.[0].url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{news.[0].source}}</a></p>
+        <div class="carousel-item active" style="padding: 5%;">
+            <h3>Today's</h3>
+            <p>{{fact1.text}}</p>
+            <p><a href="{{fact1.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{fact1.source}}</a></p>
         </div>
-        <div class="carousel-item">
-            <img src="{{news.[1].image_url}}" class="d-block w-100" alt="...">
-            <h5>{{news.[1].title}}</h5>
-            <p>{{news.[1].snippet}}</p>
-            <p><a href="{{news.[1].url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{news.[1].source}}</a></p>
+        <div class="carousel-item" style="padding: 5%;">
+            <h3>Random</h3>
+            <p>{{fact2.text}}</p>
+            <p><a href="{{fact2.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{fact2.source}}</a></p>
         </div>
-        <div class="carousel-item">
-            <img src="{{news.[2].image_url}}" class="d-block w-100" alt="...">
-            <h5>{{news.[2].title}}</h5>
-            <p>{{news.[2].snippet}}</p>
-            <p><a href="{{news.[2].url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{news.[2].source}}</a></p>
+        <div class="carousel-item" style="padding: 5%;">
+            <h3>Zufällig</h3>
+            <p>{{fact3.text}}</p>
+            <p><a href="{{fact3.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%;">{{fact3.source}}</a></p>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
