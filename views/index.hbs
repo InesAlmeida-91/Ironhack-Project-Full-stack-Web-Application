@@ -1,61 +1,61 @@
 <main class="container row align-items-start">
-    <section class="col-3">
-        <h4>Interests</h3>
-        <p><a href="/humor">Humor</a></p>
-        <p><a href="/sports">Sports</a></p>
-        <p><a href="/ask">Ask</a></p>
-        <p><a href="/todayi">Today I...</a></p>
-        <p><a href="/others">Others</a></p>
-    </section>
-    <section class="col-5">
-{{#if currentUser}}
-        <div class="card" style="width: 55vw; margin-top: 50px;">
-            <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
-            <div class="card-header">
-                <select name="theme" id="" required>
-                    <option value="">Select a Theme</option>
-                    <option value="Humor">Humor</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Ask">Ask</option>
-                    <option value="Today I...">Today I...</option>
-                    <option value="Others">Others</option>
-                </select>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <input type="text" name="title" id="" style="width: 52.5vw;" required>
-                </h5>
-                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
-                <label>Image:
-                <input type="file" name="post-image" class="form-control-file" />
-                </label>
-                <br>
-                <input type="submit" value="Create Post">
-            </div>
-            </form>
-            <div class="card-footer">
-                {{currentUser.username}}
-            </div>
-            
+  <section class="col-3" style="margin-top: 70px; font-family: 'Montserrat', sans-serif;">
+    <h4 style="color:#FF9800; font-weight: bold;">Interests</h3>
+    <p><a href="/humor" style="color:#000000; text-decoration: none;">&bull; Humor</a></p>
+    <p><a href="/sports" style="color:#000000; text-decoration: none;">&bull; Sports</a></p>
+    <p><a href="/ask" style="color: #000000; text-decoration: none;">&bull; Ask</a></p>
+    <p><a href="/todayi" style="color: #000000; text-decoration: none;">&bull; Today I...</a></p>
+    <p><a href="/others" style="color:#000000; text-decoration: none;">&bull; Others</a></p>
+  </section>
+ 
+  <section class="col-5">
+    {{#if currentUser}}
+    <div class="card" style="width: 55vw; margin-top: 70px;">
+      <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
+        <div class="card-header">
+          <select name="theme" id="" required>
+            <option value="">Select a Theme</option>
+            <option value="Humor">Humor</option>
+            <option value="Sports">Sports</option>
+            <option value="Ask">Ask</option>
+            <option value="Today I...">Today I...</option>
+            <option value="Others">Others</option>
+          </select>
         </div>
-{{else}}
-{{/if}}
+        <div class="card-body">
+          <h5 class="card-title">
+            <input type="text" name="title" id="" style="width: 52.5vw;" required>
+          </h5>
+          <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
+          <label>Image:
+            <input type="file" name="post-image" class="form-control-file" />
+          </label>
+          <br>
+          <input type="submit" value="Create Post" style="width: 150px; margin-top: 10px; background-color: #00008B; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+        </div>
+      </form>
+      <div class="card-footer" style="color: #000000;">
+        {{currentUser.username}}
+      </div>
+    </div>
+    {{else}}
+    {{/if}}
 
-        {{#each postArray}}
-        <div class="card" style="margin-top: 50px; width:55vw;">
-            <div class="card-header">{{theme}}</div>
-            <div class="card-body">
-                <a href="/post/{{_id}}"> <h5 class="card-title">{{title}}</h5> </a>
-                <p class="card-text">{{content}} <br>
-                <img src="{{imageUrl}}">
-                <br> Comments: {{commentcount}}</p>                
-            </div>
-            <div class="card-footer">
-                <a href="/profile/{{author.username}}">{{author.username}}</a>
-            </div>
-        </div>
-        {{/each}}
-    </section>
-    <section class="col-3">
-    </section>
+    {{#each postArray}}
+    <div class="card" style="margin-top: 50px; width:55vw;">
+      <div class="card-header" style="color: #00008B;">{{theme}}</div>
+      <div class="card-body">
+        <a href="/post/{{_id}}" style="color: #00008B; text-decoration: none;"> <h5 class="card-title">{{title}}</h5> </a>
+        <p class="card-text">{{content}} <br>
+          <img src="{{imageUrl}}">
+          <br> Comments: {{commentcount}}</p>
+      </div>
+      <div class="card-footer">
+        <a href="/profile/{{author.username}}" style="color: #00008B; text-decoration: none;">{{author.username}}</a>
+      </div>
+    </div>
+    {{/each}}
+  </section>
+  <section class="col-3">
+  </section>
 </main>

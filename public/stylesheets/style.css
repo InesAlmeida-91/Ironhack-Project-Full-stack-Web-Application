@@ -2,50 +2,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00b7ff;
-}
-
-#login{
-  display: flex;
-  padding-right: 2vw;
-}
-
-#navbuffer{
-  padding: 3vw;
-}
-
-nav input{
-  margin-right: 10px;
-}
-
-nav {
-  color: white;
-  background-color: teal;
-  padding: 2vw;
-  display: flex;
-  justify-content: space-between;
+.navbar.fixed-top {
   position: fixed;
-  top: 0px;
-  width: 98vw;
-}
-
-nav a{
-  text-decoration: none;
-  color: white;
-}
-
-header{
-  display: flex;
-  justify-content: center;
-}
-
-header form{
-  display: flex;
-  flex-direction: column;
-}
-
-#logpost{
-  height: 200px;
-  width: 400px;
+  top: 0;
+  width: 100%;
 }

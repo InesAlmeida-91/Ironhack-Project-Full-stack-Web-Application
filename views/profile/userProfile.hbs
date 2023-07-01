@@ -1,18 +1,22 @@
-<div class="container">
-  <h1>Welcome to {{foundUser.username}}'s profile</h1>
-  <h3>Email: {{foundUser.email}}</h3>
+<div class="container" style="text-align: center; font-family: 'Montserrat', sans-serif;">
+  <h1 style="color: #FF9800; margin-top: 70px; font-weight: bold;">Welcome to {{foundUser.username}}'s profile</h1>
+  <h4 style="color: #000000;">Email: {{foundUser.email}}</h4>
   <br>
   <img src="{{foundUser.avatar}}" alt="">
   {{#if isOwner}}
-  <h3>Create/Edit your Avatar</h3>
-  <a href="/profile/{{foundUser.username}}/avatar">here</a>
-  
-  <h3>Do you need to change your profile?</h3>
-  <a href="/profile/{{foundUser.username}}/updateProfile">Update Profile</a>
-  
-  <h3>Do you want to delete your account?</h3>
+  <h4 style="color: #000000;">Create/Edit your Avatar</h4>
+  <form action="/profile/{{foundUser.username}}/avatar" method="GET">
+    <button type="submit" style="width: 150px; margin: 10px; background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; padding: 7px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800';">Here</button>
+  </form>
+
+  <h4 style="color: #000000;">Do you need to change your profile?</h4>
+  <form action="/profile/{{foundUser.username}}/updateProfile" method="GET">
+    <button type="submit" style="width: 150px; margin: 10px; background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; padding: 7px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800';">Update Profile</button>
+  </form>
+
+  <h4 style="color: #000000;">Do you want to delete your account?</h4>
   <form action="/profile/{{foundUser.username}}/delete" method="POST">
-    <button onclick="return confirm('Are you sure you want to delete your profile?')"> Delete Profile </button>
+    <button type="submit" onclick="return confirm('Are you sure you want to delete your profile?')" style="width: 150px; margin: 10px; background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; padding: 7px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800';">Delete Profile</button>
   </form>
   {{/if}}
 
@@ -20,3 +24,4 @@
   {{!-- Create a Commented on Section --}}
 
 </div>
+

@@ -1,10 +1,10 @@
-<div class="container">
-    <h1>Add Title</h1>
-    <p>Add instruction that will be removed once button is pressed</p>
+<div class="container" style="text-align: center; font-family: 'Montserrat', sans-serif;">
+  <h1 style="margin-top: 70px; color: #FF9800; font-weight: bold;">Create your Avatar</h1>
+   {{!--<p>Add instruction that will be removed once button is pressed</p>--}} 
 </div>
 <div class="d-flex mb-3 container">
     <canvas id="canvas" class="p-2"></canvas>
-    <button id="start" class="p-2 btn btn-primary" style="width: 150px; height: 50px;">Start Avatar Edit</button>
+        <button id="start" class="p-2 btn btn-primary" style="width: 230px; height: 50px; background-color: #FF9800; color: #FFFFFF; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800';">Start Avatar Edit</button>
     <div id="showOnStart" style="visibility: hidden;" class="p-2">
         <button id="prv-shoe-sty">&laquo; Previous</button>
         Shoes Style <span id="shoe-sty">{{currentUser.shoeStyle}}</span>

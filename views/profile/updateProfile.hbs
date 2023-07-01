@@ -1,14 +1,17 @@
-<h1>Update Profile</h1>
+<div style="text-align: center; font-family: 'Montserrat', sans-serif; margin-top: 70px;">
+  <h1 style="color: #FF9800; font-weight: bold;">Update Profile</h1>
 
-<form action="/profile/{{foundUser.username}}/updateProfile" method="POST">
-  <label>Username</label>
-  <input type="text" name="username" value="{{foundUser.username}}" required />
-  <br />
-  <label>Email</label>
-  <input type="email" name="email" value="{{foundUser.email}}" required />
-  <br />
-  {{!-- <label>Password</label>
-  <input type="password" name="password" required /> --}}
-  <br />
-  <button type="submit">Save Changes</button>
-</form>
+  <form action="/profile/{{foundUser.username}}/updateProfile" method="POST" style="text-align: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 30px;">
+      <label style="color: #000000;">Username:
+        <input type="text" name="username" value="{{foundUser.username}}" required style="margin-top: 20px; padding: 5px; border: 1px solid #FF9800; border-radius: 5px; width: 200px; font-size: 17px;" />
+      </label>
+      <br />
+      <label style="color:#000000;">Email:
+        <input type="email" name="email" value="{{foundUser.email}}" required style="margin-top: 10px; padding: 5px; border: 1px solid #FF9800; border-radius: 5px; width: 200px; font-size: 17px;" />
+      </label>
+    </div>
+    <br />
+    <button type="submit" style="background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;" onmouseover="this.style.backgroundColor = '#333333'" onmouseout="this.style.backgroundColor = '#FF9800'">Save Changes</button>
+  </form>
+</div>

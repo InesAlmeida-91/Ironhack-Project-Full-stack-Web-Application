@@ -1,29 +1,40 @@
-<h1>Signup</h1>
+<div class="container" style="text-align: center; font-family: 'Montserrat', sans-serif;">
+  <h1 style="color: #FF9800; margin-top: 70px; font-weight: bold;">Signup</h1>
 
-<form action="/auth/signup" method="POST">
-    <label> Username
-      <input type="text" name="username"  placeholder="socialnetwork" required />
+<div>
+  <form action="/auth/signup" method="POST" style="margin-top: 20px;">
+    <label style="margin-bottom: 10px; color: #000000"> Username:
+      <input type="text" name="username" placeholder="Username" required style="margin-top: 30px; padding: 5px; border: 1px solid #FF9800; border-radius: 5px; width: 200px; font-size: 17px;" />
     </label>
     <br>
-    <label> Email
-      <input type="email" name="email" placeholder="socialnetwork@socialnetwork.com" required />
+    <label style="margin-bottom: 10px; color: #000000"> Email:
+      <input type="email" name="email" placeholder="email@trendr.com" required style="margin-top: 10px; padding: 5px; border: 1px solid #FF9800; border-radius: 5px; width: 200px; font-size: 17px;" />
     </label>
     <br>
-    <label> Password
-      <input type="password" name="password" placeholder="********" required />
+    <label style="margin-bottom: 10px; color: #000000"> Password:
+      <input type="password" name="password" placeholder="********" required style="margin-top: 10px; padding: 5px; border: 1px solid #FF9800; border-radius: 5px; width: 200px; font-size: 17px;" />
     </label>
- 
+
     {{!-- <p>Join with Facebook</p> --}}
     {{!-- <p>Join with Gmail</p> --}}
 
-    <button type="submit">Create account</button>
+    <p style="font-size: 17px; margin-top: 3px;">
+      <button type="submit" style="width: 150px; background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; padding: 7px 16px; border-radius: 5px; cursor: pointer; font-size: 17px;"
+        onmouseover="this.style.backgroundColor = '#333333';"
+        onmouseout="this.style.backgroundColor = '#FF9800';">Create account</button>
+    </p>
+  </div>
 
-    <p>Already a member? 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      Log In
-      </button>
-</form>
+<div style="margin-top: 70px">
+    <p style="font-size: 12px; margin-bottom: 0;">Already a member?</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="width: 60px; background-color: #FF9800; color: #FFFFFF; border: 1px solid #FF9800; border-radius: 5px; cursor: pointer; font-size: 10px;"
+      onmouseover="this.style.backgroundColor = '#333333';"
+      onmouseout="this.style.backgroundColor = '#FF9800';">Log In</button>
+    </p>
+  </form>
 
-{{#if errorMessage}}
-   <p>{{errorMessage}}</p>
-{{/if}}
+</div>
+  {{#if errorMessage}}
+  <p style="font-size: 17px;">{{errorMessage}}</p>
+  {{/if}}
+</div>
