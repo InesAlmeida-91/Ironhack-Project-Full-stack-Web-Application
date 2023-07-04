@@ -1,61 +1,116 @@
-<main class="container row align-items-start">
-    <section class="col-3">
-        <h4>Interests</h3>
-        <p><a href="/humor">Humor</a></p>
-        <p><a href="/sports">Sports</a></p>
-        <p><a href="/ask">Ask</a></p>
-        <p><a href="/todayi">Today I...</a></p>
-        <p><a href="/others">Others</a></p>
-    </section>
-    <section class="col-5">
-{{#if currentUser}}
-        <div class="card" style="width: 55vw; margin-top: 50px;">
-            <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
-            <div class="card-header">
-                <select name="theme" id="" required>
-                    <option value="">Select a Theme</option>
-                    <option value="Humor">Humor</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Ask">Ask</option>
-                    <option value="Today I...">Today I...</option>
-                    <option value="Others">Others</option>
-                </select>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                    <input type="text" name="title" id="" style="width: 52.5vw;" required>
-                </h5>
-                <textarea name="content" id="createPost" rows="10" style="resize: none; width:52.5vw;" required></textarea>
-                <label>Image:
-                <input type="file" name="post-image" class="form-control-file" />
-                </label>
-                <br>
-                <input type="submit" value="Create Post">
-            </div>
-            </form>
-            <div class="card-footer">
-                {{currentUser.username}}
-            </div>
-            
-        </div>
-{{else}}
-{{/if}}
+<main class="d-flex" style="width: 98vw;">
+   <section class="col-3" style="margin-top: 100px; font-family: 'Montserrat', sans-serif;">
+      <div style="position: sticky; top: 70px;">
+         <div style="margin-left: 30px;">
+            <h4 style="color:#FF9800; font-weight: bold;">Interests</h3>
+            <p><a href="/humor" style="color:#000000; text-decoration: none;"> Humor</a></p>
+            <p><a href="/sports" style="color:#000000; text-decoration: none;"> Sports</a></p>
+            <p><a href="/ask" style="color: #000000; text-decoration: none;"> Ask</a></p>
+            <p><a href="/todayi" style="color: #000000; text-decoration: none;"> Today I...</a></p>
+            <p><a href="/others" style="color:#000000; text-decoration: none;"> Others</a></p>
+         </div>
+      </div>
+   </section>
+   <section style="margin-top: 80px;">
+      {{#if currentUser}}
 
-        {{#each postArray}}
-        <div class="card" style="margin-top: 50px; width:55vw;">
-            <div class="card-header">{{theme}}</div>
+      <!-- Button trigger modal -->
+      <div>
+         <div style="display: flex; justify-content: center;">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #FF9800; border-color: #FF9800;" onmouseover="this.style.backgroundColor = '#333333'; this.style.borderColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800'; this.style.borderColor = '#FF9800';">
+               Create a Post!
+            </button>
+         </div>
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h1 class="modal-title fs-3" id="exampleModalLabel" style="font-size: 24px; font-weight: bold; color: black;">Create a Post</h1>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="padding: 15px;">
+                     <form action="/post" method="post" name="createPost" enctype="multipart/form-data">
+                        <div class="mb-3">
+                           <select name="theme" id="" required class="form-control">
+                              <option value="">Select a Theme</option>
+                              <option value="Humor">Humor</option>
+                              <option value="Sports">Sports</option>
+                              <option value="Ask">Ask</option>
+                              <option value="Today I...">Today I...</option>
+                              <option value="Others">Others</option>
+                           </select>
+                        </div>
+                        <div class="mb-3">
+                           <input type="text" name="title" placeholder="Add Title..." style="width: 100%;" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                           <textarea name="content" rows="6" placeholder="Write the description to your post..." style="resize: none; width: 100%;" required class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                           <label class="form-label">Image:</label>
+                           <input type="file" name="post-image" class="form-control-file">
+                        </div>
+                        <div class="modal-footer" style="display: flex; justify-content: flex-end; padding: 15px;">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-left: 10px">Close</button>
+                           <input type="submit" value="Create Post" class="btn btn-primary" style="background-color: #FF9800; border-color: #FF9800;" onmouseover="this.style.backgroundColor = '#333333'; this.style.borderColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800'; this.style.borderColor = '#FF9800';">
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+         {{else}}
+         {{/if}}
+
+         {{#each postArray}}
+         <div class="card" style="margin-top: 50px; width: 55vw;">
+            <div class="card-header" style="background-color: #333333; color: white;">{{theme}}</div>
             <div class="card-body">
-                <a href="/post/{{_id}}"> <h5 class="card-title">{{title}}</h5> </a>
-                <p class="card-text">{{content}} <br>
-                <img src="{{imageUrl}}">
-                <br> Comments: {{commentcount}}</p>                
+               <a style="text-decoration: none;" href="/post/{{_id}}"> <h5 class="card-title" style="color: black; font-weight: bold;">{{title}}</h5> </a>
+               <p class="card-text" style="color: black;">{{content}} <br>
+                  <img src="{{imageUrl}}" style="max-width: 100%;">
+                  <br>
+                  <a href="/profile/{{author.username}}" style="color: black; font-weight: bold; text-decoration: none; font-weight: bold;">Created by: {{author.username}}</a>
+                  <br> Comments: {{commentcount}}</p>
             </div>
-            <div class="card-footer">
-                <a href="/profile/{{author.username}}">{{author.username}}</a>
+         </div>
+         {{/each}}
+   </section>
+   <section class="" style="margin-top: 100px;">
+      <div class="card" style="width: 16vw; margin-left: 2vw; position: sticky; top: 70px;">
+         <div class="card-header" style="background-color: #333333; color: white;">
+            <h3>Random Facts</h3>
+         </div>
+         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active" style="padding: 5%;">
+                  <h3 style="color: black; font-weight: bold;">Today's</h3>
+                  <p style="color: black;">{{fact1.text}}</p>
+                  <p><a href="{{fact1.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%; color: #FF9800; font-weight: bold;">{{fact1.source}}</a></p>
+               </div>
+               <div class="carousel-item" style="padding: 5%;">
+                  <h3 style="color: black; font-weight: bold;">Random</h3>
+                  <p style="color: black;">{{fact2.text}}</p>
+                  <p><a href="{{fact2.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%; color: #FF9800; font-weight: bold;">{{fact2.source}}</a></p>
+               </div>
+               <div class="carousel-item" style="padding: 5%;">
+                  <h3 style="color: black; font-weight: bold;">Zufällig</h3>
+                  <p style="color: black;">{{fact3.text}}</p>
+                  <p><a href="{{fact3.source_url}}" target="_blank" rel="noopener noreferrer" style="margin-left: 10%; color: #FF9800; font-weight: bold;">{{fact3.source}}</a></p>
+               </div>
             </div>
-        </div>
-        {{/each}}
-    </section>
-    <section class="col-3">
-    </section>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Next</span>
+            </button>
+         </div>
+      </div>
+   </section>
 </main>

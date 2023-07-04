@@ -21,7 +21,7 @@ router.post("/signup", async (req, res, next) => {
     req.session.currentUser = {username, email};
     res.redirect(`/profile/${req.session.currentUser.username}`);
   } catch(error){
-      res.render('auth/signup', {errorMessage: 'invalid username or email please try again'})
+      res.render('auth/signup', {errorMessage: 'Invalid username or email please try again'})
       console.log(error);
     }
 });

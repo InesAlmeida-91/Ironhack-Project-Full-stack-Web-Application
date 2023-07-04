@@ -1,22 +1,5 @@
 {{#if successMessage}}
-  <div class="success-message">
-    <p>Your profile has been deleted</p>
-  </div>
+<div class="success-message" style="color:#000000; padding: 10px; text-align: center; margin-top: 70px; font: size 17px;">
+  <p>Your profile has been deleted</p>
+</div>
 {{/if}}
-
-<script>
-  let countdown = 5; 
-
-  const countdownElement = document.getElementById('countdown');
-  countdownElement.textContent = countdown;
-
-  const countdownInterval = setInterval(() => {
-    countdown--;
-    countdownElement.textContent = countdown;
-
-    if (countdown === 0) {
-      clearInterval(countdownInterval);
-      window.location.href = "/";
-    }
-  }, 1000);
-</script>

@@ -50,8 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.getElementById('start').addEventListener('click', function(){
   //remove the start button
-  document.getElementById('start').setAttribute('style', 'visibility: hidden');
-  document.getElementById('showOnStart').setAttribute('style', 'visibility: visible');
+  document.getElementById('start').hidden = true;
+  document.getElementById('showOnStart').hidden = false;
+  canvas.hidden = false;
   //put the rest of the buttons
   updateDrawing();
   drawCurrent();

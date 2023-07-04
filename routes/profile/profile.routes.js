@@ -62,11 +62,13 @@ router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const { currentUser } = req.session;
-    const salt = await bcrypt.genSalt(saltRounds);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    // const salt = await bcrypt.genSalt(saltRounds);
+    // const hashedPassword = await bcrypt.hash(password, salt);
     const updatedProfile = await User.findOneAndUpdate(
       { email: currentUser.email },
-      { username, email, passwordHash: hashedPassword },
+      { username, email, 
+        // passwordHash: hashedPassword
+      },
       { new: true }
     );
     req.session.currentUser = { username, email, password };
