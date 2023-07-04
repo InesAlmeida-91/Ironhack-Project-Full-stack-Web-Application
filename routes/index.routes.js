@@ -6,7 +6,6 @@ const axios = require('axios');
 
 router.get("/", async (req, res, next) => {
   try{
-
     const todaysFacts = await axios.get(`https://uselessfacts.jsph.pl/api/v2/facts/today`);
     const randomFacts = await axios.get(`https://uselessfacts.jsph.pl/api/v2/facts/random`);
     const randomFactsde = await axios.get(`https://uselessfacts.jsph.pl/api/v2/facts/random?language=de`);

@@ -23,9 +23,8 @@ router.get("/profile/:profile", async (req, res, next) => {
       }
     }
     else{res.redirect('/')}
-  } catch (error) {
-  console.log(error)
-    }
+  }
+  catch (error) { next(error) }
 });
 
 
@@ -35,12 +34,9 @@ router.get("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
     if(req.session.currentUser.username === req.params.profile){
       res.render(`profile/avatar`, {loggedIn: true, currentUser: foundUser});
     }
-    else{res.redirect('/')}
+    else{ res.redirect('/') }
   }
-  catch (error) {
-    console.log(error)
-  }
-
+  catch (error) { next(error); }
 });
 
 router.post("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
@@ -48,46 +44,38 @@ router.post("/profile/:profile/avatar", isLoggedIn, async (req, res, next) => {
     await User.findOneAndUpdate({username: req.session.currentUser.username}, req.body);
     res.redirect(`/profile/${req.session.currentUser.username}`)
   }
-  else{res.redirect('/')}
+  else{ res.redirect('/') }
 });
 
 router.get('/profile/:profile/updateProfile', isLoggedIn, (req, res) => {
   if(req.session.currentUser.username === req.params.profile){
     res.render(`profile/updateProfile`, { foundUser: req.session.currentUser, currentUser: req.session.currentUser});
   }
-  else{res.redirect('/')}
+  else{ res.redirect('/'); }
 });
 
 router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const { currentUser } = req.session;
-    // const salt = await bcrypt.genSalt(saltRounds);
-    // const hashedPassword = await bcrypt.hash(password, salt);
     const updatedProfile = await User.findOneAndUpdate(
       { email: currentUser.email },
-      { username, email, 
-        // passwordHash: hashedPassword
-      },
+      { username, email },
       { new: true }
     );
     req.session.currentUser = { username, email, password };
     res.redirect(`/profile/${req.session.currentUser.username}`);
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) { next(error); }
 });
-//don't forget to delete all the post and comments
+
 router.post('/profile/:profile/delete', isLoggedIn, async (req, res) => {
   try {
     const { currentUser } = req.session;
     const deletedUser = await User.findOneAndDelete({ email: currentUser.email });
-    //missing the deleted posts
     req.session.destroy();
     res.render('profile/deletedProfile', { successMessage: 'Your profile has been deleted' });
-  } catch (error) {
-    console.log(error);
   }
+  catch (error) { next(error); }
 });
 
 module.exports = router;

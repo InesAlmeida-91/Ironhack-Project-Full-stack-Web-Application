@@ -45,18 +45,16 @@ let eyeColor = document.getElementById('eye-clr').innerHTML;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
 document.addEventListener("DOMContentLoaded", () => {
-// console.log("ironhack-project-fullstack-webapp JS imported successfully!");
 });
 
 document.getElementById('start').addEventListener('click', function(){
-  //remove the start button
   document.getElementById('start').hidden = true;
   document.getElementById('showOnStart').hidden = false;
   canvas.hidden = false;
-  //put the rest of the buttons
   updateDrawing();
   drawCurrent();
 })
+
 //Shoe Style
 document.getElementById('nxt-shoe-sty').addEventListener('click',  function(){
   shoeStyle++;
@@ -296,11 +294,6 @@ function updateDrawing(){
   eye.src = `/images/avatar/Face/Eyes/${eyeColor}eye${eyeStyle}.png`
 }
 
-//add event listeners for the buttons
-//add function to move around the gallery
-//parameters that are combined-singular skin with nose, hair with eyebrow
-//shoe, shirt, pants, hair parameters: color and style
-
 function hairAlign(){
   if (hairStyle == 1 || hairStyle == 6 || hairStyle == 7){
     ctx.drawImage(hair, 93, 10, 75, 55);
@@ -381,7 +374,6 @@ function eyeAlign(){
 function drawCurrent(){
   document.getElementById('avt-src-inp').value = document.getElementById("canvas").toDataURL("image/png");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //adjust positions
   ctx.drawImage(skinNeck, 97.5, 90, 65, 40);
   ctx.drawImage(skinHead, 87, 20, 85, 75);
   ctx.drawImage(skinArmLeft, 20, 95, 80, 100);
