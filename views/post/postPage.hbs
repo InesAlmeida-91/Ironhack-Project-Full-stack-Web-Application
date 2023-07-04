@@ -1,12 +1,14 @@
 <div class="container d-flex justify-content-center" style="font-family: 'Montserrat', sans-serif;">
     <div class="card" style="margin-top: 100px; width: 55vw;">
-        <div class="card-header" style="background-color: #FF9800; color: white;">{{post.theme}}</div>
+        <div class="card-header" style="background-color: #333333; color: white;">{{post.theme}}</div>
         <div class="card-body">
             {{#if isOwner}}
-            <h6>
-                <a href="/post/{{post.id}}/edit" style="color: #FF9800; font-weight: bold;">Edit</a>
+            <h6 class="d-flex justify-content-between">
+                <a href="/post/{{post.id}}/edit" class="btn btn-secondary" style="margin-left: 10px; background-color: #FF9800; border-color: #FF9800; color: white;"
+   onmouseover="this.style.backgroundColor = '#333333';"
+   onmouseout="this.style.backgroundColor = '#FF9800';">Edit Post</a>
                 <form action="/post/{{post.id}}/delete" method="post">
-                    <input type="submit" value="Delete" class="btn btn-danger">
+                    <input type="submit" value="Delete" class="btn btn-secondary">
                 </form>
             </h6>
             {{/if}}
@@ -17,14 +19,14 @@
             </p>
         </div>
         <div class="container">
-            <h6 style="color: black;">Comments:</h6>
-            <div class="card" style="margin-top: 50px; width: 53vw; font-family: 'Montserrat', sans-serif;">
+            <h6 style="color: black; margin-bottom: 5px;">Comments:</h6> 
+            <div class="card" style="margin-top: 10px; width: 53vw; font-family: 'Montserrat', sans-serif;">
                 <ul class="list-group list-group-flush">
                     {{#each comment}}
                     <li class="list-group-item">{{content}} - Comment by: {{author.username}} {{#if owner}}
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#{{id}}" style="margin-left: 10px; background-color: #FF9800; border-color: #FF9800;"
             onmouseover="this.style.backgroundColor = '#333333';"
-            onmouseout="this.style.backgroundColor = '#FF9800';">Edit</button>
+            onmouseout="this.style.backgroundColor = '#FF9800';">Edit Comment</button>
                         {{/if}}
                         <!-- Modal -->
                         <div class="modal fade" id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
@@ -33,9 +35,8 @@
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-3" id="{{id}}Label" style="font-size: 24px; font-weight: bold; color: black;">Edit Comment</h1>
                                         <form action="/comment/{{id}}/delete" method="post">
-                                            <input type="submit" class="btn btn-danger" value="Delete">
+                                            <input type="submit" class="btn btn-secondary" value="Delete">
                                         </form>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" style="padding: 15px;">
                                         <form action="/comment/{{id}}" method="post">
@@ -66,7 +67,7 @@
             onmouseout="this.style.backgroundColor = '#FF9800';">
             </form>
             {{/if}}
-<p style="font-weight: bold">Created by: <a style="text-decoration: none; color: black;" href="/profile/{{post.author.username}}">{{post.author.username}}</a></p>        </div>
+            <p style="font-weight: bold">Created by: <a style="text-decoration: none; color: black;" href="/profile/{{post.author.username}}">{{post.author.username}}</a></p>        </div>
     </div>
 </div>
 
