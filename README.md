@@ -44,6 +44,6 @@ To create a post, start by logging in to your account. Once logged in, locate th
 Creating your own avatar on Trendr is a fun and personalized way to represent yourself in the digital world. To get started, log in to your Trendr account and navigate to the "Avatar" section in your profile, located at the link when you click your user name on the top right. Follow the on-screen prompts to customize your avatar's appearance, including hairstyle, facial features, clothing, and more. You can make it look as much like you as you want or be as creative as you like! Once you're satisfied with your avatar, save it, and it will become available for use across Trendr, allowing you to express yourself uniquely in comments, messages, and even as a profile picture. Enjoy creating your avatar and have fun sharing your new digital persona with friends and family!
 
 #
-Throughout the website, you can like and comment on posts from other users. Engaging in conversations, following interesting profiles, and building connections within the Trendr community.
+Throughout the website, you can like and comment on posts from other users. Engaging in conversations, and building connections within the Trendr community.
 
 Happy posting and connecting with Trendr!
