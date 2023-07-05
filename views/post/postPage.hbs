@@ -5,8 +5,8 @@
             {{#if isOwner}}
             <h6 class="d-flex justify-content-between">
                 <a href="/post/{{post.id}}/edit" class="btn btn-secondary" style="margin-left: 10px; background-color: #FF9800; border-color: #FF9800; color: white;"
-   onmouseover="this.style.backgroundColor = '#333333';"
-   onmouseout="this.style.backgroundColor = '#FF9800';">Edit Post</a>
+                    onmouseover="this.style.backgroundColor = '#333333';"
+                    onmouseout="this.style.backgroundColor = '#FF9800';">Edit Post</a>
                 <form action="/post/{{post.id}}/delete" method="post">
                     <input type="submit" value="Delete" class="btn btn-secondary">
                 </form>
@@ -25,8 +25,8 @@
                     {{#each comment}}
                     <li class="list-group-item">{{content}} - Comment by: {{author.username}} {{#if owner}}
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#{{id}}" style="margin-left: 10px; background-color: #FF9800; border-color: #FF9800;"
-            onmouseover="this.style.backgroundColor = '#333333';"
-            onmouseout="this.style.backgroundColor = '#FF9800';">Edit Comment</button>
+                            onmouseover="this.style.backgroundColor = '#333333';"
+                            onmouseout="this.style.backgroundColor = '#FF9800';">Edit Comment</button>
                         {{/if}}
                         <!-- Modal -->
                         <div class="modal fade" id="{{id}}" tabindex="-1" aria-labelledby="{{id}}Label" aria-hidden="true">
@@ -63,8 +63,8 @@
                 <textarea name="content" id="addComment" rows="1" style="resize: none; width: 52.5vw;" required></textarea>
                 <br>
                 <input type="submit" value="Add Comment" class="btn btn-primary" style="background-color: #FF9800; border-color: #FF9800;"
-            onmouseover="this.style.backgroundColor = '#333333';"
-            onmouseout="this.style.backgroundColor = '#FF9800';">
+                    onmouseover="this.style.backgroundColor = '#333333';"
+                    onmouseout="this.style.backgroundColor = '#FF9800';">
             </form>
             {{/if}}
             <p style="font-weight: bold">Created by: <a style="text-decoration: none; color: black;" href="/profile/{{post.author.username}}">{{post.author.username}}</a></p>        </div>
@@ -73,10 +73,10 @@
 
 <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px;">
     <button class="btn btn-secondary"
-            onclick="goBack()"
-            style="background-color: #FF9800; border-color: #FF9800;"
-            onmouseover="this.style.backgroundColor = '#333333';"
-            onmouseout="this.style.backgroundColor = '#FF9800';">Go Back</button>
+        onclick="goBack()"
+        style="background-color: #FF9800; border-color: #FF9800;"
+        onmouseover="this.style.backgroundColor = '#333333';"
+        onmouseout="this.style.backgroundColor = '#FF9800';">Go Back</button>
 </div>
 
 <script>

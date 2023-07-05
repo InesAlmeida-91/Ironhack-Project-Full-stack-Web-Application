@@ -20,7 +20,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.'],
     },
-    avatar: {type: String}, //avatar qualities
+    avatar: {type: String},
     shoeStyle: {type: Number, default: 1},
     shoeColor: {type: Number, default: 1},
     skinColor: {type: Number, default: 1},
@@ -49,8 +49,6 @@ const userSchema = new Schema(
     timestamps: true
   }
 );
-
-//userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 const User = model("User", userSchema);
 
