@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
     else {res.render("index", {postArray: latestFirst, fact1: todaysFacts.data, fact2: randomFacts.data, fact3: randomFactsde.data});}
   }
   catch(error){
-    res.render('auth/signup', {errorMessage: 'invalid username or email'})
+    res.render('auth/signup', {errorMessage: 'Invalid username or email'})
     console.log(error);
   }
 });
