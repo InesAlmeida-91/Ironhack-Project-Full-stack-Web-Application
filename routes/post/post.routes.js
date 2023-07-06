@@ -7,7 +7,7 @@ const User = require('../../models/User.model');
 const fileUploader = require('../../config/cloudinary.config');
 
 
-router.post("/post", fileUploader.single('post-image'), async (req, res, next) => {
+router.post("/post", isLoggedIn,fileUploader.single('post-image'), async (req, res, next) => {
   try {
     if (req.session.currentUser) {
       let imageUrl = '';
@@ -64,7 +64,7 @@ router.get("/post/:id/edit", async (req, res, next) => {
   catch (error) { next(error); }
 });
 
-router.post("/post/:id/edit", async (req, res, next) => {
+router.post("/post/:id/edit", isLoggedIn, async (req, res, next) => {
   try {
     const confirmUser = await Post.findById(req.params.id).populate('author');
     if (confirmUser.author.id === req.session.currentUser._id) {
@@ -80,7 +80,7 @@ router.post("/post/:id/edit", async (req, res, next) => {
   catch (error) { next(error); }
 });
 
-router.post("/post/:id/delete", async (req, res, next) => {
+router.post("/post/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
     const confirmUser = await Post.findById(req.params.id).populate('author')
     if (confirmUser.author.id === req.session.currentUser._id) {
@@ -93,7 +93,7 @@ router.post("/post/:id/delete", async (req, res, next) => {
   catch (error) { next(error); }
 });
 
-router.post("/post/:id/comment", async (req, res, next) => {
+router.post("/post/:id/comment", isLoggedIn, async (req, res, next) => {
   try {
     const userinQuestion = await User.findOne({username: req.session.currentUser.username});
     if(req.session.currentUser){
@@ -112,7 +112,7 @@ router.post("/post/:id/comment", async (req, res, next) => {
   catch (error) { next(error); }
 });
 
-router.post("/comment/:id", async (req, res, next) => {
+router.post("/comment/:id", isLoggedIn, async (req, res, next) => {
   try {
     const commentFind = await Comment.findById(req.params.id).populate('author').populate('Post');
     if(req.session.currentUser){
@@ -129,7 +129,7 @@ router.post("/comment/:id", async (req, res, next) => {
   }
 });
 
-router.post("/comment/:id/delete", async (req, res, next) => {
+router.post("/comment/:id/delete", isLoggedIn, async (req, res, next) => {
   try {
     const commentFind = await Comment.findById(req.params.id).populate('author').populate('Post');
     if(req.session.currentUser){
