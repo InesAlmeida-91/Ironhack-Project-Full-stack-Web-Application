@@ -31,24 +31,21 @@ router.get("/post/:id", async (req, res, next) => {
   try {
     const postId = req.params.id;
     const post = await Post.findById(postId).populate('author');
-    const loadComments = await Comment.find({ post: postId }).populate('author');
-
-    if (!req.session.currentUser) {
-      res.render('post/postPage', { post, comment: loadComments });
-    } else {
-      const currentUser = req.session.currentUser;
-
-      for (let i = 0; i < loadComments.length; i++) {
-        if (loadComments[i].author && loadComments[i].author.username === currentUser.username) {
-          loadComments[i].owner = true;
-        }
+    const loadComments = await Comment.find({Post: postId}).populate('author');
+    if(!req.session.currentUser) { res.render('post/postPage', { post: post, comment: loadComments }); }
+    else if (req.session.currentUser){
+      for(i=0; i < loadComments.length ;i++){
+        if(loadComments[i].author.username === req.session.currentUser.username){loadComments[i].owner = true;}
       }
-      const isOwner = currentUser.username === post.author?.username;
-      res.render('post/postPage', { post, comment: loadComments, currentUser, isOwner });
+      if(req.session.currentUser.username === post.author.username){
+        res.render('post/postPage', { post: post, comment: loadComments, isOwner: true, currentUser: req.session.currentUser });  
+      }
+      else {
+        res.render('post/postPage', { post: post, comment: loadComments, currentUser: req.session.currentUser });
+      }
     }
-  } catch (error) {
-    next(error);
   }
+  catch (error) { next(error); }
 });
 
 router.get("/post/:id/edit", async (req, res, next) => {
