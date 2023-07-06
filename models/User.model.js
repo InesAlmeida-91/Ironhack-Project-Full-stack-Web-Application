@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema(
   {
@@ -37,12 +36,6 @@ const userSchema = new Schema(
     noseStyle: {type: Number, default: 1},
     eyeStyle: {type: Number, default: 1},
     eyeColor: {type: Number, default: 1},
-    facebookId: { 
-      type: String 
-    },
-    googleId: { 
-      type: String 
-    },
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }]
   },
   {    
