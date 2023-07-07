@@ -51,6 +51,9 @@
                            <label class="form-label">Image:</label>
                            <input type="file" name="post-image" class="form-control-file">
                         </div>
+                        <div class="mb-3">
+                           <input type="text" name="author" readonly value="{{currentUser._id}}" class="form-control" hidden>
+                        </div>
                         <div class="modal-footer" style="display: flex; justify-content: flex-end; padding: 15px;">
                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-left: 10px">Close</button>
                            <input type="submit" value="Create Post" class="btn btn-primary" style="background-color: #FF9800; border-color: #FF9800;" onmouseover="this.style.backgroundColor = '#333333'; this.style.borderColor = '#333333';" onmouseout="this.style.backgroundColor = '#FF9800'; this.style.borderColor = '#FF9800';">
@@ -73,7 +76,7 @@
                <p class="card-text" style="color: black;">{{content}} <br>
                   <img src="{{imageUrl}}" style="max-width: 100%;">
                   <br>
-                  <a href="/profile/{{author.username}}" style="color: black; font-weight: bold; text-decoration: none; font-weight: bold;">Created by: {{author.username}}</a>
+                  Created by: <a href="/profile/{{author.username}}" style="color: black; font-weight: bold; text-decoration: none; font-weight: bold;">{{author.username}}</a>
                   <br> Comments: {{commentcount}}</p>
             </div>
          </div>
