@@ -7,13 +7,16 @@ const User = require('../../models/User.model');
 const fileUploader = require('../../config/cloudinary.config');
 
 
-router.post("/post", isLoggedIn,fileUploader.single('post-image'), async (req, res, next) => {
+router.post("/post", isLoggedIn, fileUploader.single('post-image'), async (req, res, next) => {
   try {
     if (req.session.currentUser) {
       let imageUrl = '';
-      if (req.file) { imageUrl = req.file.path; }
+      if (req.file) {
+        imageUrl = req.file.path;
+      }
+      const author = req.session.currentUser._id; 
       await Post.create({
-        author: req.body.author,
+        author: author,
         title: req.body.title,
         imageUrl: imageUrl,
         content: req.body.content,
@@ -21,10 +24,12 @@ router.post("/post", isLoggedIn,fileUploader.single('post-image'), async (req, r
         commentcount: 0,
       });
       res.redirect("/");
+    } else {
+      res.redirect("/");
     }
-    else { res.redirect("/"); }
+  } catch (error) {
+    next(error);
   }
-  catch (error) { next(error); }
 });
 
 router.get("/post/:id", async (req, res, next) => {
