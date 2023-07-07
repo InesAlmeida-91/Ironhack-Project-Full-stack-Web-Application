@@ -3,9 +3,11 @@ const saltRounds = 10;
 
 const express = require('express');
 const router = express.Router();
-
+const ObjectID = require('mongodb').ObjectId;
 const User = require('../../models/User.model');
 const { isLoggedIn } = require('../../middleware/route.guard');
+const Post = require('../../models/Post.model');
+const Comment = require('../../models/Comment.model');
 
 
 router.get("/profile/:profile", async (req, res, next) => {
@@ -68,10 +70,13 @@ router.post('/profile/:profile/updateProfile', isLoggedIn, async (req, res) => {
   } catch (error) { next(error); }
 });
 
-router.post('/profile/:profile/delete', isLoggedIn, async (req, res) => {
+router.post('/profile/:profile/delete', isLoggedIn, async (req, res, next) => {
   try {
     const { currentUser } = req.session;
-    const deletedUser = await User.findOneAndDelete({ email: currentUser.email });
+    console.log(currentUser._id);
+    Post.deleteMany({author: new ObjectID(currentUser._id)});
+    Comment.deleteMany({author: new ObjectID(currentUser._id)});
+    await User.findOneAndDelete({ email: currentUser.email });
     req.session.destroy();
     res.render('profile/deletedProfile', { successMessage: 'Your profile has been deleted' });
   }

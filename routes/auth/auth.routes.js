@@ -15,7 +15,7 @@ router.post("/signup", async (req, res, next) => {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     await User.create({username, email, passwordHash: hashedPassword});
-    const userFromDB = await User.findOne(username);
+    const userFromDB = await User.findOne({username: username});
     req.session.currentUser = userFromDB;
     res.redirect(`/profile/${req.session.currentUser.username}`);
   }
