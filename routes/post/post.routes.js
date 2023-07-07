@@ -13,7 +13,7 @@ router.post("/post", isLoggedIn,fileUploader.single('post-image'), async (req, r
       let imageUrl = '';
       if (req.file) { imageUrl = req.file.path; }
       await Post.create({
-        author: req.session.currentUser._id,
+        author: req.body.author,
         title: req.body.title,
         imageUrl: imageUrl,
         content: req.body.content,
