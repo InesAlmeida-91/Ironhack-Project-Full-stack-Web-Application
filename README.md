@@ -34,7 +34,7 @@ To access the features of Trendr, users need to create an account. Click on the 
 
 # Logging In
 
-Once you have signed up, click on the "Log In" button and enter your credentials to access your account. If you forget your password, there is an option to reset it.
+Once you have signed up, click on the "Log In" button and enter your credentials to access your account.
 
 # Creating a post
 
