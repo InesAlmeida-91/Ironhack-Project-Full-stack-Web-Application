@@ -1,6 +1,6 @@
 # Ironhack-Project-Full-stack-Web-Application
 
-Website: https://trendr.cyclic.app/
+Website: https://trendr.cyclic.cloud/
 
 # Trendr
 Trendr is a unique social media platform that allows users to engage with each other by posting questions, sharing updates about their day, cracking funny jokes, and discussing various sports topics. This README file provides an overview of the website's features and usage instructions.
